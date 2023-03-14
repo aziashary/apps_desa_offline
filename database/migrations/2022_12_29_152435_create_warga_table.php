@@ -26,6 +26,10 @@ class CreateWargaTable extends Migration
             $table->string('jenis_pekerjaan');
             $table->string('jenis_kelamin');
             $table->string('agama');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->boolean('isWarga')->default(true);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

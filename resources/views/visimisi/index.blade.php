@@ -9,7 +9,7 @@
 
   <div class="container-xxl flex-grow-1 container-p-y">
           <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
               <li class="breadcrumb-item active" aria-current="page">Visi dan Misi</li>
           </ol>
     

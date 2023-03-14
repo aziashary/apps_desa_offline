@@ -21,7 +21,7 @@
               </div>
         <div class="card-body">
         @foreach ($data as $sejarah)
-            <form method="POST" action="{{ URL('/sejarah/update/'. $sejarah->id_sejarah) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('admindesa/sejarah/update/'. $sejarah->id_sejarah) }}" enctype="multipart/form-data">
             @csrf {{ method_field('PATCH') }}
             <div class="col-md-12">
               <div class="form-group">

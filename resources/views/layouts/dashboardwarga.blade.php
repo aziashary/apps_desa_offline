@@ -127,137 +127,19 @@
             </a>
           </li>
 
-          {{-- Master Data --}}
-            <li class="menu-header small text-uppercase">
-                    <span class="menu-header-text">Master Data</span>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-dashboard"></i>
-                <div data-i18n="Warga">Warga</div>
-                </a>
-                <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ url('admindesa/warga') }}" class="menu-link">
-                    <div data-i18n="Data Warga">Data Warga</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ url('admindesa/warga/create') }}" class="menu-link">
-                    <div data-i18n="Tambah Warga">Tambah Warga</div>
-                    </a>
-                </li>
-                </ul>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-building"></i>
-                <div data-i18n="Struktur Desa">Struktur Desa</div>
-                </a>
-                <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ url('admindesa/aparaturdesa') }}" class="menu-link">
-                    <div data-i18n="Data Aparatur Desa">Data Aparatur Desa</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ url('admindesa/jabatan') }}" class="menu-link">
-                    <div data-i18n="Data Jabatan Desa">Data Jabatan Desa</div>
-                    </a>
-                </li>
-                </ul>
-            </li>
+          <li class="menu-item">
+            <a href="{{ url('dashboard-warga/profile') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Data Warga">Data Warga</div>
+            </a>
+          </li>
 
-            {{-- Aplikasi Surat --}}
-            <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Aplikasi Surat</span>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-envelope"></i>
-                <div data-i18n="Surat Keterangan Miskin">Surat Keterangan Miskin</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item">
-                      <a href="{{ url('admindesa/SKKM') }}" class="menu-link">
-                      <div data-i18n="Data Surat Keterangan Miskin">Data SKKM</div>
-                      </a>
-                  </li>
-                  <li class="menu-item">
-                      <a href="{{ url('admindesa/SKKM/create') }}" class="menu-link">
-                      <div data-i18n="Tambah Surat Keterangan Miskin">Tambah SKKM</div>
-                      </a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="{{ url('admindesa/SKKM/pengajuan') }}" class="menu-link">
-                    <div data-i18n="Tambah Surat Keterangan Miskin">Pengajuan SKKM</div>
-                    </a>
-                  </li>
-                </ul>
-            </li>
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-envelope"></i>
-                <div data-i18n="Struktur Desa">Surat Keterangan Usaha</div>
-                </a>
-                <ul class="menu-sub">
-                  <li class="menu-item">
-                      <a href="{{ url('admindesa/SKU') }}" class="menu-link">
-                      <div data-i18n="Data Surat Keterangan Usaha">Data SKU</div>
-                      </a>
-                  </li>
-                  <li class="menu-item">
-                      <a href="{{  url('admindesa/SKU/create') }}" class="menu-link">
-                      <div data-i18n="Tambah Surat Keterangan Usaha">Tambah SKU</div>
-                      </a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="{{  url('admindesa/SKU/pengajuan') }}" class="menu-link">
-                    <div data-i18n="Tambah Surat Keterangan Usaha">Pengajuan SKU</div>
-                    </a>
-                  </li>
-                </ul>
-            </li>
-
-            {{-- Data Informasi --}}
-            <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Data Informasi Web Desa</span>
-            </li>
-
-            <li class="menu-item">
-                <a href="{{ url('admindesa/sejarah') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-user-pin"></i>
-                  <div data-i18n="Tentang">Tentang</div>
-                </a>
-            </li>
-
-            <li class="menu-item">
-                <a href="{{ url('admindesa/visimisi') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-message-alt-minus"></i>
-                  <div data-i18n="Visi misi">Visi misi</div>
-                </a>
-            </li>
-
-            <li class="menu-item">
-                <a href="{{ url('admindesa/dokumentasi') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-news"></i>
-                  <div data-i18n="Dokumentasi / Artikel">Dokumentasi / Artikel</div>
-                </a>
-            </li>
-
-            <li class="menu-item">
-                <a href="{{ url('admindesa/kontak') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bxs-contact"></i>
-                  <div data-i18n="Kontak">Kontak</div>
-                </a>
-            </li>
-
-            <li class="menu-item">
-                <a href="{{ url('admindesa/komentar') }}" class="menu-link">
-                  <i class="menu-icon tf-icons bx  bx-message-rounded-minus"></i>
-                  <div data-i18n="Pesan dan Komentar">Pesan dan Komentar</div>
-                </a>
-            </li>
+          <li class="menu-item">
+            <a href="{{ url('dashboard-warga/pengajuan') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-home-circle"></i>
+              <div data-i18n="Data Warga">Data Warga</div>
+            </a>
+          </li>
               
             
           
@@ -333,6 +215,9 @@
                     </a>
                   </li>
                   <li>
+                    <div class="dropdown-divider"></div>
+                  </li>
+                  <li>
                     <a class="dropdown-item" href="#">
                       <i class="bx bx-user me-2"></i>
                       <span class="align-middle">My Profile</span>
@@ -352,6 +237,9 @@
                         <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                       </span>
                     </a>
+                  </li>
+                  <li>
+                    <div class="dropdown-divider"></div>
                   </li>
                   <li>
                     <a class="dropdown-item" href="auth-login-basic.html">

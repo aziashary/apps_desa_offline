@@ -59,7 +59,15 @@ class SKKMController extends Controller
     header('Cache-Control: no-cache, no-store, max-age=0, must-revalidate');
 
     // Output the HTML file to the browser
+    echo '<!DOCTYPE html>
+          <html>
+            <head>
+              <title>Print SKKM</title>
+            </head>
+            <body onload="window.print();">';
     echo file_get_contents('plugin\file.html');
+    echo '</body>
+          </html>';
 }
 
     function edit($id_skkm)

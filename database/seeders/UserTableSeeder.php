@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class UsersTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'username'=>'admindesa',
             'email'=>'queensi.net@gmail.com',
             'password'=>Hash::make('12345678'),
+            'level'=>1,
         ]);
     }
 }

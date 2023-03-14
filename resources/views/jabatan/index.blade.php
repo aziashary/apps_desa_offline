@@ -9,7 +9,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Data Jabatan</li>
             </ol>
       
@@ -19,7 +19,7 @@
                 <div class="card-body">
         <div class="mb-4">
           <div class="btn-group">
-              <a href="{{ URL('/jabatan/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Jabatan</i></a>
+              <a href="{{ url('admindesa/jabatan/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Jabatan</i></a>
           </div>
       </div>
       <table class="table table-striped" id="table1">

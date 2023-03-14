@@ -9,8 +9,8 @@
 
   <div class="container-xxl flex-grow-1 container-p-y">
           <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-              <li class="breadcrumb-item"><a href="{{ url('/SKU') }}">Data Komentar</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('admindesa/SKU') }}">Data Komentar</a></li>
           </ol>
     
 

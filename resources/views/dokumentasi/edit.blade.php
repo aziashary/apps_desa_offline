@@ -9,8 +9,8 @@
 
   <div class="container-xxl flex-grow-1 container-p-y">
           <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-              <li class="breadcrumb-item"><a href="{{ url('/SKU') }}">Data Dokumentasi</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('admindesa/SKU') }}">Data Dokumentasi</a></li>
               <li class="breadcrumb-item active" aria-current="page">Edit Dokumentasi</li>
           </ol>
     
@@ -19,7 +19,7 @@
           <h4 class="card-header">Edit Dokumentasi</h4>
               <div class="card-body">
                     @foreach ($data as $dokumentasi)
-                <form method="POST" action="{{ URL('/dokumentasi/update/'. $dokumentasi->id_dokumentasi) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ url('admindesa/dokumentasi/update/'. $dokumentasi->id_dokumentasi) }}" enctype="multipart/form-data">
                     @csrf {{ method_field('PATCH') }}
             <div class="row">
               <div class="col-md-4 mb-4">

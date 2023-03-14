@@ -12,15 +12,16 @@
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data Warga</li>
+            <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('admindesa/warga') }}">Data Warga</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tambah Data Warga</li>
         </ol>
   
 
     <div class="card">
-        <h4 class="card-header">Data Warga</h4>
+        <h4 class="card-header">Tambah Data Warga</h4>
             <div class="card-body">
-                    <form method="POST" action="{{ URL('/warga/store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('admindesa/warga/store') }}" enctype="multipart/form-data">
                         @csrf
                     <div class="row">
                         <div class="col-md-6">

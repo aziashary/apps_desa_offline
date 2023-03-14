@@ -8,69 +8,54 @@
 @endpush
 
 @section('content')
-<div class="page-heading">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Edit Data Warga</h3>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('/warga') }}">Data Warga</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Data Warga</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
+<div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('admindesa/warga') }}">Data Warga</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tambah Data Warga</li>
+        </ol>
+  
 
     
-<section class="section">
-    <div class="row mb-2">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Input Data Warga </h4>
-                </div>
-
+        <div class="card">
+            <h4 class="card-header">Edit Data Warga</h4>
                 <div class="card-body">
                     @foreach($data as $warga)
-                    <form method="POST" action="{{ URL('/warga/update/'. $warga->id_warga) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('admindesa/warga/update/'. $warga->id_warga) }}" enctype="multipart/form-data">
                         @csrf {{ method_field('PATCH') }}
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="nik"><strong> NIK : </strong></label>
                                 <input type="number" class="form-control" id="nik" name="nik" value="{{ $warga->nik }}">
                             </div>
                         </div>
                         
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="nama_warga"><strong> Nama : </strong></label>
                                 <input type="text" class="form-control" id="nama_warga" name="nama_warga" value="{{ $warga->nama_warga }}">
                             </div>
                         </div> 
 
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="tempat_lahir"><strong> Tempat Lahir : </strong></label>
                                 <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $warga->tempat_lahir }}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="tanggal_lahir"><strong> Tanggal Lahir : </strong></label>
                                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $warga->tanggal_lahir }}">
                             </div>
                         </div>
 
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="RT"><strong> RT :</strong></label>
                                 <select class="form-control" name='RT' required>
                                     <option value='{{ $warga->RT }}'>{{ $warga->RT }}</option>
@@ -84,7 +69,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="RW"><strong> RW :</strong></label>
                                 <select class="form-control" name='RW' required>
                                     <option value='{{ $warga->RW }}'>{{ $warga->RW }}</option>
@@ -98,20 +83,20 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="desa"><strong> Desa / Kelurahan : </strong></label>
                                 <input type="input" class="form-control" id="desa" name="desa" value="Ciaruteun Ilir" readonly>
                             </div>
                         </div>
 
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="alamat"><strong> Alamat : </strong></label>
                                 <textarea class="form-control" id="alamat" name="alamat" value="Alamat Lengkap">{{ $warga->alamat}}</textarea>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="jenis_pekerjaan"><strong> Pekerjaan :</strong></label>
                                 <select class="form-control" name='jenis_pekerjaan'>
                                 <option value='{{ $warga->jenis_pekerjaan }}'>{{ $warga->jenis_pekerjaan }}</option>
@@ -129,7 +114,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="jenis_kelamin"><strong> Jenis Kelamin :</strong></label>
                                 <select class="form-control" name='jenis_kelamin'>
                                 <option value='{{ $warga->jenis_kelamin }}'>{{ $warga->jenis_kelamin }}</option>
@@ -140,7 +125,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="agama"><strong> Agama :</strong></label>
                                 <select class="form-control" name='agama'>
                                 <option value='{{ $warga->agama }}'>{{ $warga->agama }} </option>

@@ -46,6 +46,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'warga' => [
+            'driver' => 'session',
+            'provider' => 'warga',
+        ],
     ],
 
     /*
@@ -69,6 +73,12 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'warga' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Warga::class,
+            'table' => 'warga',
+            'where' => ['isWarga' => true],
         ],
 
         // 'users' => [

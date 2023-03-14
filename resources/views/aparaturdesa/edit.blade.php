@@ -10,8 +10,8 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/jabatan') }}">Data Jabatan</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/jabatan') }}">Data Jabatan</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Data Jabatan</li>
             </ol>
       
@@ -20,7 +20,7 @@
             <h4 class="card-header">Edit Jabatan</h4>
                 <div class="card-body">
         @foreach ($data as $aparaturdesa)
-            <form method="POST" action="{{ URL('/aparaturdesa/update/'. $aparaturdesa->id_aparatur) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('admindesa/aparaturdesa/update/'. $aparaturdesa->id_aparatur) }}" enctype="multipart/form-data">
             @csrf {{ method_field('PATCH') }}
             <div class="form-group">
                 <label for="nama_aparatur">Nama</label>

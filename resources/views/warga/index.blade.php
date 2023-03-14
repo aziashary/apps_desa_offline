@@ -14,7 +14,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Data Warga</li>
             </ol>
       
@@ -23,7 +23,7 @@
             <h4 class="card-header">Data Warga</h4>
                 <div class="card-body">
                     <div class="btn-group">
-                        <a href="{{ URL('/warga/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Warga</i></a>
+                        <a href="{{ url('admindesa/warga/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Warga</i></a>
                     </div>
                 <table class="table table-striped" id="table1">
                     <thead>

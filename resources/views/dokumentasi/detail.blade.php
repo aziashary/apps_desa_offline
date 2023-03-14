@@ -56,7 +56,7 @@
                                 {{-- <td>{{ $no++ }}</td> --}}
                                 <td><img src="/detaildokumentasi/fetch_image_detail/{{ $data->id_detaildokumentasi }}"  class="img-thumbnail" width="500" height="500" /></td>
                                 <td align="center" >
-                                  <a href="{{ URL('/detaildokumentasi/delete/'. $data->id_detaildokumentasi) }}" class="btn btn-danger">Hapus</a>
+                                  <a href="{{ url('admindesa/detaildokumentasi/delete/'. $data->id_detaildokumentasi) }}" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -90,7 +90,7 @@
       </div>
       <div class="modal-body">
         @foreach ($item as $keys)
-        <form method="POST" action="{{ URL('/dokumentasi/storedetail/'. $keys->id_dokumentasi) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('admindesa/dokumentasi/storedetail/'. $keys->id_dokumentasi) }}" enctype="multipart/form-data">
         @csrf {{ method_field('PATCH') }}
         <div class="form-group">
             <label for="gambar_dokumentasi">Upload Foto Tambahan</label><br>

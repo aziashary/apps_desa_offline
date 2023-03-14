@@ -12,8 +12,8 @@
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('/jabatan') }}">Data Jabatan</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('admindesa/') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('admindesa/jabatan') }}">Data Jabatan</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Jabatan</li>
                     </ol>
                 </nav>
@@ -31,7 +31,7 @@
               </div>
               <div class="card-body">
             @foreach ($data as $jabatan)
-            <form method="POST" action="{{ URL('/jabatan/update/'. $jabatan->id_jabatan) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('admindesa/jabatan/update/'. $jabatan->id_jabatan) }}" enctype="multipart/form-data">
             @csrf {{ method_field('PATCH') }}
             <div class="form-group">
                 <label for="nama_jabatan">Nama Jabatan</label>
@@ -50,7 +50,7 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-success">Simpan</button>
-            <a type="button" class="btn btn-secondary" href="{{ url('/jabatan') }}">Cancel</a>
+            <a type="button" class="btn btn-secondary" href="{{ url('admindesa/jabatan') }}">Cancel</a>
           </form>
         </div> 
     </div>

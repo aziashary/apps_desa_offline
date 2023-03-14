@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Warga;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class WargaFactory extends Factory
 {
@@ -42,7 +43,9 @@ class WargaFactory extends Factory
                 'Mahasiswa',
             ]),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki','Perempuan']),
-            'agama' => $this->faker->randomElement(['Islam','Kristen'])
+            'agama' => $this->faker->randomElement(['Islam','Kristen']),
+            'password'=> Hash::make('12345678'),
+            'email' => $this->faker->email
         ];
     }
 }

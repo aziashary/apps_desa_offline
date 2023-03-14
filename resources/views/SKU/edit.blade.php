@@ -13,8 +13,8 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/SKU') }}">Data Surat Keterangan Usaha</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/SKU') }}">Data Surat Keterangan Usaha</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tambah Surat Keterangan Usaha</li>
             </ol>
       
@@ -23,7 +23,7 @@
             <h4 class="card-header">Tambah Surat Keterangan Usaha</h4>
                 @foreach($data as $sku)
                 <div class="card-body">
-                    <form method="POST" action="{{ URL('/SKU/update/'. $sku->id_sku) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('admindesa/SKU/update/'. $sku->id_sku) }}" enctype="multipart/form-data">
                         @csrf {{ method_field('PATCH') }}
                     <div class="row">
                         <div class="col-md-12 mb-4">

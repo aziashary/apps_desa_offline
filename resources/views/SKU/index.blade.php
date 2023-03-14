@@ -13,7 +13,7 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Data Surat Keterangan Usaha</li>
             </ol>
       
@@ -23,7 +23,7 @@
                 <div class="card-body">
             <div class="mb-4">
                 <div class="btn-group">
-                    <a href="{{ url('/SKU/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Surat Keterangan Usaha</i></a>
+                    <a href="{{ url('admindesa/SKU/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Surat Keterangan Usaha</i></a>
                 </div>
             </div>
             <table class="table table-striped" id="table1">
@@ -75,7 +75,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form method="POST" action="{{ URL('/SKU/delete') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('admindesa/SKU/delete') }}" enctype="multipart/form-data">
             @csrf
         <div class="modal-body">
           Apakah anda yakin akan menghapus data ini?  <br>

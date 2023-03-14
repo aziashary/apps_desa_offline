@@ -8,8 +8,8 @@
 
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/aparaturdesa') }}">Data Aparatur Desa</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/aparaturdesa') }}">Data Aparatur Desa</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Tambah Data Aparatur Desa</li>
             </ol>
       
@@ -17,7 +17,7 @@
         <div class="card">
             <h4 class="card-header">Tambah Aparatur Desa</h4>
                 <div class="card-body">
-                        <form method="POST" action="{{ URL('/aparaturdesa/store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('admindesa/aparaturdesa/store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="col-md-12">
                             <div class="mb-3">
@@ -56,7 +56,7 @@
                     </div>
                         <br>
                         <button type="submit" class="btn btn-success">Simpan</button>
-                        <a type="button" class="btn btn-secondary" href="{{ url('/aparaturdesa') }}">Cancel</a>
+                        <a type="button" class="btn btn-secondary" href="{{ url('admindesa/aparaturdesa') }}">Cancel</a>
                         </form>
                     </div> 
                 </div>

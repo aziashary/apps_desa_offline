@@ -3,14 +3,14 @@
 <title>Detail Komentar - Aplikasi Surat Desa</title>
 @endsection
 @section('content')
-<li class="breadcrumb-item"><a href="{{ url('/SKU') }}">Data Komentar</a></li>
+<li class="breadcrumb-item"><a href="{{ url('admindesa/SKU') }}">Data Komentar</a></li>
 <div class="content-wrapper">
     <!-- Content -->
 
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/komentar') }}">Data Komentar</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/komentar') }}">Data Komentar</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Data Komentar</li>
             </ol>
       
@@ -19,7 +19,7 @@
             <h4 class="card-header">Detail Komentar</h4>
                 <div class="card-body">
         @foreach ($data as $komentar)
-            <form method="POST" action="{{ URL('/komentar/update/'. $komentar->id_komentar) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('admindesa/komentar/update/'. $komentar->id_komentar) }}" enctype="multipart/form-data">
             @csrf {{ method_field('PATCH') }}
             <div class="w-50">
             <div class="form-group">

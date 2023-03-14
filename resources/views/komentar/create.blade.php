@@ -6,8 +6,8 @@
   
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('/SKU') }}">Data Komentar</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/SKU') }}">Data Komentar</a></li>
             </ol>
       
   
@@ -15,7 +15,7 @@
             <h4 class="card-header">Data Komentar</h4>
                 <div class="card-body">         
 
-            <form method="POST" action="{{ URL('/komentar/store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('admindesa/komentar/store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="nama_aparatur">Nama</label>

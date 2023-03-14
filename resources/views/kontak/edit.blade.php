@@ -19,7 +19,7 @@
               </div>
         <div class="card-body">
         @foreach ($data as $kontak)
-            <form method="POST" action="{{ URL('/kontak/update/'. $kontak->id_kontak) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('admindesa/kontak/update/'. $kontak->id_kontak) }}" enctype="multipart/form-data">
             @csrf {{ method_field('PATCH') }}
             <div class="form-group">
                 <label for="alamat">Alamat</label>
@@ -46,7 +46,7 @@
                 <input type="text" class="form-control" name=whatsapp value="{{ $kontak->whatsapp }}">
             </div>
             <button type="submit" class="btn btn-success">Update</button>
-            <a type="button" class="btn btn-secondary" href="{{ url('/kontak') }}">Cancel</a>
+            <a type="button" class="btn btn-secondary" href="{{ url('admindesa/kontak') }}">Cancel</a>
             @endforeach
         </form>
         </div> 
