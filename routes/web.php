@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\SKKMController;
-use App\Http\Controllers\SKUController;
+use App\Http\Controllers\SKController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SejarahController;
 use App\Http\Controllers\VisimisiController;
@@ -51,7 +51,7 @@ Route::post('/warga-auth', [LoginwargaController::class, 'login']);
 Route::get('/', [HomeController::class, 'index']);
 
 // Dashboard Warga
-Route::group(['prefix' => 'dashboardwarga', 'middleware' => ['warga']], function () {
+Route::group(['prefix' => 'dashboardwarga', 'middleware' => ['auth:warga']], function () {
     Route::get('/', [DashboardwargaController::class, 'index']);
 });
 
@@ -78,14 +78,14 @@ Route::group(['prefix' => 'admindesa'], function () {
     Route::patch('/update/{id_skkm}', [SKKMController::class, 'update']);
         });
 
-        Route::group(['prefix' => 'SKU'], function () {
-    Route::get('/', [SKUcontroller::class, 'index']);
-    Route::get('/create', [SKUcontroller::class, 'create']);
-    Route::post('/store', [SKUcontroller::class, 'store']);
-    Route::get('/print/{id_sku}', [SKUcontroller::class, 'print']);
-    Route::get('/edit/{id_sku}', [SKUcontroller::class, 'edit']);
-    Route::get('/delete/{id_sku}', [SKUcontroller::class, 'delete']);
-    Route::patch('/update/{id_sku}', [SKUcontroller::class, 'update']);
+        Route::group(['prefix' => 'SK'], function () {
+    Route::get('/', [SKcontroller::class, 'index']);
+    Route::get('/create', [SKcontroller::class, 'create']);
+    Route::post('/store', [SKcontroller::class, 'store']);
+    Route::get('/print/{id_sk}', [SKcontroller::class, 'print']);
+    Route::get('/edit/{id_sk}', [SKcontroller::class, 'edit']);
+    Route::get('/delete/{id_sk}', [SKcontroller::class, 'delete']);
+    Route::patch('/update/{id_sk}', [SKcontroller::class, 'update']);
         });
 
         Route::group(['prefix' => 'sejarah'], function () {

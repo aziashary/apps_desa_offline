@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('judul')
-<title>Data SKU - Aplikasi Surat Desa</title>
+<title>Data SK - Aplikasi Surat Desa</title>
 @endsection
 @push('css')
 <link rel="stylesheet" href="{{ asset ('assets/extensions/simple-datatables/style.css') }}">
@@ -23,7 +23,7 @@
                 <div class="card-body">
             <div class="mb-4">
                 <div class="btn-group">
-                    <a href="{{ url('admindesa/SKU/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Surat Keterangan Usaha</i></a>
+                    <a href="{{ url('admindesa/SK/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Surat Keterangan Usaha</i></a>
                 </div>
             </div>
             <table class="table table-striped" id="table1">
@@ -43,19 +43,19 @@
                         ?>
                 <tbody>
                     
-                @foreach($data as $sku)
+                @foreach($data as $sk)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $sku->no_sku}}</td>
-                        <td>{{ $sku->wargas->nama_warga }}</td>
-                        <td>{{ date('d-m-Y', strtotime($sku->created_at)) }}</td>
-                        <td>{{ $sku->jenis_usaha}}</td>
+                        <td>{{ $sk->no_sk}}</td>
+                        <td>{{ $sk->wargas->nama_warga }}</td>
+                        <td>{{ date('d-m-Y', strtotime($sk->created_at)) }}</td>
+                        <td>{{ $sk->jenis_usaha}}</td>
                         <td align="center" >
-                            <a href="{{ URL('SKU/edit/'. $sku->id_sku) }}" class="btn btn-success">Edit</a>
-                            <a href="{{ URL('SKU/delete/'. $sku->id_sku) }}" class="btn btn-danger">Hapus</a>
+                            <a href="{{ URL('SK/edit/'. $sk->id_sk) }}" class="btn btn-success">Edit</a>
+                            <a href="{{ URL('SK/delete/'. $sk->id_sk) }}" class="btn btn-danger">Hapus</a>
                         </td>
                         <td align="center" >
-                            <a href="{{ URL('SKU/print/'. $sku->id_sku) }}" target="_blank" class="btn btn-primary">Print</a>
+                            <a href="{{ URL('SK/print/'. $sk->id_sk) }}" target="_blank" class="btn btn-primary">Print</a>
                         </td>
                     </tr>
                     @endforeach
@@ -75,12 +75,12 @@
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form method="POST" action="{{ url('admindesa/SKU/delete') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ url('admindesa/SK/delete') }}" enctype="multipart/form-data">
             @csrf
         <div class="modal-body">
           Apakah anda yakin akan menghapus data ini?  <br>
         </div>
-        <input type="hidden" id="id_surat" name="id_sku">
+        <input type="hidden" id="id_surat" name="id_sk">
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
           <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>

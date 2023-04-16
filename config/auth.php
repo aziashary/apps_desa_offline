@@ -78,7 +78,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Warga::class,
             'table' => 'warga',
-            'where' => ['isWarga' => true],
         ],
 
         // 'users' => [

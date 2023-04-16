@@ -2,17 +2,21 @@
 
 namespace Database\Factories;
 
-use App\Models\SKU;
+use App\Models\SK;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
 
-class SKUFactory extends Factory
+class SKFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = SKU::class;
+    protected $model = SK::class;
 
     /**
      * Define the model's default state.
@@ -38,12 +42,17 @@ class SKUFactory extends Factory
         
 
         $yearNow = date('Y');
-
+        for ($i = 0; $i < 10; $i++) {
         return [
-            'no_sku' => "510"." /"."  ".$this->faker->unique()->numberBetween(1, 500)."  "."/ ".$returnValue." / ".$yearNow,
+            'no_sk' => $this->faker->randomElement(['"510".','"140".'])." /"." ".$this->faker->unique()->numberBetween(1, 500)."  "."/ ".$returnValue." / ".$yearNow,
+            'kode_sk' => $this->faker->randomElement([510,140]),
+            'jenis_sk' => $this->faker->randomElement(['Surat Keterangan Usaha','Surat Keterangan Keluarga Miskin']),
             'id_warga' => $this->faker->numberBetween(1, 500),
-            'jenis_usaha' => $this->faker->randomElement(['Aneka Gorengan','Rumah Makan','Toko','Warung','Kedai','Bengkel']),
-            'alamat_usaha' => $this->faker->address
+            'keterangan_1' => $this->faker->randomElement(['Aneka Gorengan','Rumah Makan','Toko','Warung','Kedai','Bengkel','Keluarga Miskin']),
+            'keterangan_2' => $this->faker->address,
+            'created_at' => Carbon::now()->month(rand(1, 12)),
+            'updated_at' => Carbon::now()
         ];
     }
+}
 }

@@ -45,14 +45,14 @@
                                 <img src="{{ asset ('plugin/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
                                 </div>
                                 <div class="me-10">
-                                    <span>SKKM</span>
+                                    <span>Total SK Terealisasi Desa</span>
                                     <h2 class="text-nowrap mb-1 text-primary">200</h2>
                                     <h5 class="text-nowrap mb-1">Surat</h5> 
                                 </div>
                             </li>
                         </div>
                     </div>
-                    </div>
+                  </div>
 
             
 
@@ -64,78 +64,37 @@
                                 <img src="{{ asset ('plugin/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
                                 </div>
                                 <div class="me-10">
-                                    <span>SKU</span>
+                                    <span>Total Pengajuan SK Tersisa</span>
                                     <h2 class="text-nowrap mb-1 text-success">100</h2>
                                     <h5 class="text-nowrap mb-1">Surat</h5> 
                                 </div>
                             </li>
                         </div>
                     </div>
-                    </div>
+                  </div>
           </div>
         </div>
-        <!-- Total Revenue -->
-        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+        <!-- Progres Bulanan SK -->
+        <div class="col-12 col-lg-7 order-2 order-md-3 order-lg-2 mb-4">
           <div class="card">
             <div class="row row-bordered g-0">
-              <div class="col-md-8">
-                <h5 class="card-header m-0 me-2 pb-3">Total Revenue</h5>
-                <div id="totalRevenueChart" class="px-2"></div>
-              </div>
-              <div class="col-md-4">
-                <div class="card-body">
-                  <div class="text-center">
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-sm btn-outline-primary dropdown-toggle"
-                        type="button"
-                        id="growthReportId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        2022
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="growthReportId">
-                        <a class="dropdown-item" href="javascript:void(0);">2021</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2020</a>
-                        <a class="dropdown-item" href="javascript:void(0);">2019</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="growthChart"></div>
-                <div class="text-center fw-semibold pt-3 mb-2">62% Company Growth</div>
-
-                <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
-                  <div class="d-flex">
-                    <div class="me-2">
-                      <span class="badge bg-label-primary p-2"><i class="bx bx-dollar text-primary"></i></span>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <small>2022</small>
-                      <h6 class="mb-0">$32.5k</h6>
-                    </div>
-                  </div>
-                  <div class="d-flex">
-                    <div class="me-2">
-                      <span class="badge bg-label-info p-2"><i class="bx bx-wallet text-info"></i></span>
-                    </div>
-                    <div class="d-flex flex-column">
-                      <small>2021</small>
-                      <h6 class="mb-0">$41.2k</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <h5 class="card-header m-0 me-2 pb-3">Progres Bulanan SK</h5>
+                <div id="linesk"></div>
             </div>
           </div>
         </div>
-        <!--/ Total Revenue -->
-        
+        <!--/ Perbandingan Total Jenis SK -->
+        <div class="col-12 col-lg-5 order-2 order-md-3 order-lg-2 mb-4">
+          <div class="card">
+            <div class="row row-bordered g-0">
+              <h5 class="card-header m-0 me-2 pb-3">Perbandingan Total Jenis SK</h5>
+              <div id="barsk"></div>
+           </div>
+          </div>
+        </div>
             
-            <div class="col-md-6 col-lg-4 order-2 mb-4">
-                <div class="card h-100">
+              <div class="col-12 col-lg-3 order-2 order-md-3 order-lg-2 mb-4">
+                <div class="card">
                   <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title m-0 me-2">Jumlah Penduduk</h5>
                   </div>
@@ -190,6 +149,25 @@
                   </div>
                 </div>
               </div>
+
+          <!-- Progres Bulanan SK -->
+        <div class="col-12 col-lg-3 order-2 order-md-3 order-lg-2 mb-4">
+          <div class="card">
+            <div class="row row-bordered g-0">
+                <h5 class="card-header m-0 me-2 pb-3">Perbandingan JK</h5>
+                <div id="donutjk"></div>
+            </div>
+          </div>
+        </div>
+        <!--/ Perbandingan Total Jenis SK -->
+        <div class="col-4 col-lg-6 order-2 order-md-3 order-lg-2 mb-4">
+          <div class="card">
+            <div class="row row-bordered g-0">
+              <h5 class="card-header m-0 me-2 pb-3">Perbandingan Pekerjaan</h5>
+              <div id="columnjk"></div>
+           </div>
+          </div>
+        </div>
             
           
       </div>
@@ -399,8 +377,248 @@
     <div class="content-backdrop fade"></div>
   </div> --}}
 @endsection
-@section('js')
-<script src="{{ $chart->cdn() }}"></script>
+@push('js')
+<script>
+  // Line Chart SK perbulan
+    var options = {
+          series: [
+          {
+            name: "Progres SK ",
+            data: <?php echo json_encode($skbulan); ?>
+          }
+        ],
+          chart: {
+          height: 350,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#77B6EA', '#545454'],
+        dataLabels: {
+          enabled: true,
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+          categories: <?php echo json_encode($months); ?>,
+          title: {
+            text: 'Bulan'
+          }
+        },
+        yaxis: {
+          title: {
+            text: 'SK'
+          },
+          min: 5,
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          floating: true,
+          offsetY: -25,
+          offsetX: -5
+        }
+        };
 
-{{ $chart->script() }}
-@endsection
+        var linesk = new ApexCharts(document.querySelector("#linesk"), options);
+        linesk.render();
+ 
+  // Bar Chart Jenis Surat
+    var options = {
+          series: [{
+          data: <?php echo json_encode($skjenis); ?>
+        }],
+          chart: {
+          type: 'bar',
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            barHeight: '100%',
+            distributed: true,
+            horizontal: true,
+            dataLabels: {
+              position: 'bottom'
+            },
+          }
+        },
+        colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
+          '#f48024', '#69d2e7'
+        ],
+        dataLabels: {
+          enabled: true,
+          textAnchor: 'start',
+          style: {
+            colors: ['#fff']
+          },
+          formatter: function (val, opt) {
+            return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
+          },
+          offsetX: 0,
+          dropShadow: {
+            enabled: true
+          }
+        },
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        xaxis: {
+          categories: <?php echo json_encode($kodesk); ?>
+        },
+        yaxis: {
+          labels: {
+            show: false
+          }
+        },
+        tooltip: {
+          theme: 'dark',
+          x: {
+            show: false
+          },
+          y: {
+            title: {
+              formatter: function () {
+                return ''
+              }
+            }
+          }
+        }
+        };
+
+        var barsk = new ApexCharts(document.querySelector("#barsk"), options);
+        barsk.render();
+
+// Column chart Perbandingan Pekerjaan
+  var options = {
+          series: [{
+          name: 'Jenis Pekerjaan',
+          data:  <?php echo json_encode($wargajp); ?>
+        }],
+        chart: {
+          height: 350,
+          type: 'bar',
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            columnWidth: '50%',
+          }
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          width: 2
+        },
+        
+        grid: {
+          row: {
+            colors: ['#fff', '#f2f2f2']
+          }
+        },
+        xaxis: {
+          labels: {
+            rotate: -45,
+            style: {
+              fontSize: '12px', // Mengatur ukuran font kategori
+            }
+          },
+          categories: <?php echo json_encode($jp); ?>,
+          tickPlacement: 'on'
+        },
+        yaxis: {
+          title: {
+            text: 'Total',
+          },
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'light',
+            type: "horizontal",
+            shadeIntensity: 0.25,
+            gradientToColors: undefined,
+            inverseColors: true,
+            opacityFrom: 0.85,
+            opacityTo: 0.85,
+            stops: [50, 0, 100]
+          },
+        }
+        };
+
+        var columnjk = new ApexCharts(document.querySelector("#columnjk"), options);
+        columnjk.render();
+
+  // Pie Chart Jenis Kelamin dan anak
+    var options = {
+          series: <?php echo json_encode($wargajk); ?>,
+          chart: {
+          width: 330,
+          type: 'pie',
+        },
+        colors: ['#93C3EE', '#E5C6A0', '#669DB5', '#94A74A'],
+        fill: {
+          type: 'image',
+          opacity: 0.85,
+          image: {
+            src: [`${window.location.origin}/plugin/img/avatars/men.png`, `${window.location.origin}/plugin/img/avatars/women.png`],
+            width: 25,
+            imagedHeight: 25
+          },
+        },
+        stroke: {
+          width: 4
+        },
+        labels: <?php echo json_encode($jk); ?>,
+        dataLabels: {
+          enabled: true,
+          style: {
+            colors: ['#111']
+          },
+          background: {
+            enabled: true,
+            foreColor: '#fff',
+            borderWidth: 0
+          },
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom',
+            }
+          }
+        }]
+        };
+
+        var donutjk = new ApexCharts(document.querySelector("#donutjk"), options);
+        donutjk.render();
+      
+</script>
+
+
+@endpush

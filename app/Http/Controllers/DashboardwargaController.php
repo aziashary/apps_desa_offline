@@ -13,13 +13,10 @@ class DashboardwargaController extends Controller
     function index()
     {
      $warga = Warga::count();
-     $sku = SKU::count();
      $skkm = SKKM::count();
-     $total = SKU::count() + SKKM::count();
      $chart = LarapexChart::setType('donut')
                 ->setDataset([
-                    SKKM::count(),
-                    SKU::count()
+                    SKKM::count()
                 ])
                 ->setColors(['#435ebe','#55c6e8'])
                 ->setLabels(['SKKM', 'SKU']);
@@ -34,9 +31,7 @@ class DashboardwargaController extends Controller
 
      return view('layouts.dashboardwarga', [
         'warga' => $warga, 
-        'sku' => $sku,
         'skkm' => $skkm,
-        'total' => $total,
         'chart' => $chart,
         'char' => $char
      ]);

@@ -415,7 +415,7 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{ asset ('plugin/vendor/libs/apex-charts/apexcharts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <!-- Main JS -->
     <script src="{{ asset ('plugin/js/main.js') }}"></script>
@@ -425,6 +425,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js') }}"></script>
+
+    
 @stack('js')
 </body>
 

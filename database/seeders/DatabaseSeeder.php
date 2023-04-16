@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
     {
     
     \App\Models\SKKM::factory()->times(100)->create();
-    \App\Models\SKU::factory()->times(100)->create();
+    \App\Models\SK::factory()->times(100)->create();
     \App\Models\Warga::factory()->times(1000)->create();
     $this->call(UserTableSeeder::class);
+    $this->call(KodeskTableSeeder::class);
     }
 }

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SKKM;
 use App\Models\Warga;
-use App\Models\SKU;
-use App\Charts\JenisSuratChart;
+use App\Models\SK;
+use App\Models\Kodesk;
 use App\Charts\SuratBulananChart;
 use ArielMejiaDev\LarapexCharts\Facades\LarapexChart;
 
@@ -14,33 +14,68 @@ class DashboardController extends Controller
 {
     function index()
     {
-     $warga = Warga::count();
-     $sku = SKU::count();
-     $skkm = SKKM::count();
-     $total = SKU::count() + SKKM::count();
-     $chart = LarapexChart::setType('donut')
-                ->setDataset([
-                    SKKM::count(),
-                    SKU::count()
-                ])
-                ->setColors(['#435ebe','#55c6e8'])
-                ->setLabels(['SKKM', 'SKU']);
-    
-     $char = LarapexChart::setType('bar')
-                ->setDataset([
-                    SKKM::whereMonth('created_at','01')->count(),
-                    SKKM::whereMonth('created_at','02')->count()
-                ])
-                ->setColors(['#435ebe','#55c6e8'])
-                ->setLabels(['Jan', 'Feb']);
+       $warga = Warga::count();
+       $wargajp = Warga::selectRaw('COUNT(nik) as total_jp')
+            ->groupby('jenis_pekerjaan')
+            ->orderBy('jenis_pekerjaan')
+            ->pluck('total_jp')
+            ->toArray();
+       
+       $wargajk = Warga::selectRaw('COUNT(nik) as total_jk')
+            ->groupby('jenis_kelamin')
+            ->orderBy('jenis_kelamin')
+            ->pluck('total_jk')
+            ->toArray();
 
-     return view('/dashboard', [
-        'warga' => $warga, 
-        'sku' => $sku,
-        'skkm' => $skkm,
-        'total' => $total,
-        'chart' => $chart,
-        'char' => $char
-     ]);
+       $jp = Warga::distinct('jenis_pekerjaan')
+              ->groupby('jenis_pekerjaan')
+              ->orderBy('jenis_pekerjaan')
+              ->pluck('jenis_pekerjaan')
+              ->toArray();
+       
+       $jk = Warga::distinct('jenis_kelamin')
+              ->groupby('jenis_kelamin')
+              ->orderBy('jenis_kelamin')
+              ->pluck('jenis_kelamin')
+              ->toArray();
+
+       $skbulan = SK::selectRaw('COUNT(id_sk) as total_sk, MONTH(created_at) as month')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->pluck('total_sk')
+            ->toArray();
+
+       $skjenis = SK::selectRaw('COUNT(id_sk) as total_sk, kode_sk')
+            ->groupBy('kode_sk')
+            ->orderBy('kode_sk')
+            ->pluck('total_sk')
+            ->toArray();
+
+       $kodesk = Kodesk::orderBy('kode_sk')
+            ->pluck('singkatan_sk')
+            ->toArray();
+
+       $skkm = SKKM::count();
+       $total = SK::count() + SKKM::count();
+       $months = array();
+              for ($i = 1; $i <= 12; $i++) {
+                     $month = date('F', mktime(0, 0, 0, $i, 1));
+                     array_push($months, $month);
+       
+       }
+
+     return view('/dashboard', compact(
+        'warga',
+        'wargajp',
+        'wargajk',
+        'jk',
+        'jp',
+        'skbulan',
+        'skjenis',
+        'kodesk',
+        'skkm', 
+        'total', 
+        'months') 
+     );
     }
 }

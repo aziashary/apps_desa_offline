@@ -16,7 +16,7 @@ class LoginwargaController extends Controller
     {
         $credentials = $request->only('nik', 'password');
 
-        if (Auth::guard('warga')->attempt($credentials)) {
+        if (Auth::guard('auth:warga')->attempt($credentials)) {
             return redirect()->intended('/dashboardwarga');
         }
 
