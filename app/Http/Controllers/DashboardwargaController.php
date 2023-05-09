@@ -56,7 +56,10 @@ class DashboardwargaController extends Controller
 
     function create()
     { 
-        $data= Warga::orderBy('nama_warga', 'ASC')->get();
+        $username = auth()->user()->username;
+        $no_kk = Warga::where('nik', $username)->pluck('no_kk')->first();
+
+        $data= Warga::where('no_kk', $no_kk)->orderBy('nama_warga', 'ASC')->get();
         $item= Kodesk::orderBy('jenis_sk', 'ASC')->get();
         return view('lamanwarga.create', compact('data','item'));
     }

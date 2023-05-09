@@ -24,7 +24,7 @@
                     <form method="POST" action="{{ url('dashboardwarga/pengajuan/store') }}" enctype="multipart/form-data">
                         @csrf
                     <div class="row">
-                        {{-- <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-4">
                             <h6>Nama Warga / yang Mengajukan Surat</h6>
                             <div class="form-group">
                                 <select class="choices form-select" name="id_warga">
@@ -33,7 +33,7 @@
                                         @endforeach
                                 </select>
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="col-md-12 mb-4">
                             <h6>Jenis Surat yang diajukan</h6>
                             <div class="form-group">
