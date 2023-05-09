@@ -26,7 +26,7 @@
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah Foto</button>
         </div>
         <div class="btn-group">
-        <a type="button" class="btn btn-secondary" href="{{ url('dokumentasi') }}">Kembali</a>
+        <a type="button" class="btn btn-secondary" href="{{ url('admindesa/dokumentasi') }}">Kembali</a>
       </div>
         </div>
         <div class="row">
@@ -69,7 +69,7 @@
               </div>
               <div class="col-md-12">
               <a><i>*batas foto pendukung sebanyak 20 foto dengan size per foto max 2MB</i><a></div>
-              <a type="button" class="btn btn-secondary" href="{{ url('dokumentasi') }}">Kembali</a>
+              <a type="button" class="btn btn-secondary" href="{{ url('admindesa/dokumentasi') }}">Kembali</a>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->

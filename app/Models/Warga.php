@@ -17,6 +17,7 @@ class Warga extends AuthenticatableUser implements Authenticatable
     
     protected $fillable = [
         'nik',
+        'no_kk',
         'nama_warga',
         'tempat_lahir',
         'tanggal_lahir',

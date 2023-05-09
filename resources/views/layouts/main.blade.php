@@ -46,7 +46,7 @@
 
 <body>
  <!-- Layout wrapper -->
- <div class="layout-wrapper layout-content-navbar">
+  <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <!-- Menu -->
 
@@ -121,7 +121,7 @@
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item">
-            <a href="index.html" class="menu-link">
+            <a href="{{ url('admindesa') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -172,7 +172,7 @@
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Aplikasi Surat</span>
             </li>
-            <li class="menu-item">
+            {{-- <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-envelope"></i>
                 <div data-i18n="Surat Keterangan Miskin">Surat Keterangan Miskin</div>
@@ -194,30 +194,51 @@
                     </a>
                   </li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-envelope"></i>
-                <div data-i18n="Struktur Desa">Surat Keterangan Usaha</div>
+                <div data-i18n="Struktur Desa">Surat Keterangan</div>
                 </a>
                 <ul class="menu-sub">
                   <li class="menu-item">
-                      <a href="{{ url('admindesa/SKU') }}" class="menu-link">
-                      <div data-i18n="Data Surat Keterangan Usaha">Data SKU</div>
+                      <a href="{{ url('admindesa/SK') }}" class="menu-link">
+                      <div data-i18n="Data Surat Keterangan Usaha">Data SK</div>
                       </a>
                   </li>
                   <li class="menu-item">
-                      <a href="{{  url('admindesa/SKU/create') }}" class="menu-link">
-                      <div data-i18n="Tambah Surat Keterangan Usaha">Tambah SKU</div>
+                      <a href="{{  url('admindesa/SK/create') }}" class="menu-link">
+                      <div data-i18n="Tambah Surat Keterangan Usaha">Tambah SK</div>
                       </a>
-                  </li>
-                  <li class="menu-item">
-                    <a href="{{  url('admindesa/SKU/pengajuan') }}" class="menu-link">
-                    <div data-i18n="Tambah Surat Keterangan Usaha">Pengajuan SKU</div>
-                    </a>
                   </li>
                 </ul>
             </li>
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bxl-product-hunt"></i>
+              <div data-i18n="Struktur Desa">Data Pengajuan</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ url('admindesa/SK/pengajuan_baru') }}" class="menu-link">
+                    <div data-i18n="Data Surat Keterangan Usaha">Pengajuan SK</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{  url('admindesa/SK/pengajuan') }}" class="menu-link">
+                    <div data-i18n="Tambah Surat Keterangan Usaha">Riwayat Pengajuan</div>
+                    </a>
+                </li>
+              </ul>
+          </li>
+
+          <li class="menu-item">
+            <a href="{{ url('admindesa/kodesk/') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-barcode"></i>
+              <div data-i18n="Tentang">Kode SK</div>
+            </a>
+        </li>
 
             {{-- Data Informasi --}}
             <li class="menu-header small text-uppercase">
@@ -271,7 +292,7 @@
         <!-- Navbar -->
 
         <nav
-          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center"
+          class="layout-navbar container-fluid navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
           id="layout-navbar"
         >
           <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
@@ -282,7 +303,7 @@
 
           <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
             <!-- Search -->
-            {{-- <div class="navbar-nav align-items-center">
+            <div class="navbar-nav align-items-center">
               <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search fs-4 lh-0"></i>
                 <input
@@ -292,12 +313,12 @@
                   aria-label="Search..."
                 />
               </div>
-            </div> --}}
+            </div>
             <!-- /Search -->
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
               <!-- Place this tag where you want the button to render. -->
-              {{-- <li class="nav-item lh-1 me-3">
+              <li class="nav-item lh-1 me-3">
                 <a
                   class="github-button"
                   href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -307,13 +328,13 @@
                   aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                   >Star</a
                 >
-              </li> --}}
+              </li>
 
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="{{ asset ('plugin/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                    <i class="bx bx-building"></i>
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -322,7 +343,7 @@
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online">
-                            <img src="{{ asset ('plugin/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
+                            <i class="menu-icon tf-icons bx bx-user"></i>
                           </div>
                         </div>
                         <div class="flex-grow-1">
@@ -333,30 +354,11 @@
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
-                      <i class="bx bx-user me-2"></i>
-                      <span class="align-middle">My Profile</span>
-                    </a>
+                    <div class="dropdown-divider"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
-                      <i class="bx bx-cog me-2"></i>
-                      <span class="align-middle">Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <span class="d-flex align-items-center align-middle">
-                        <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                        <span class="flex-grow-1 align-middle">Billing</span>
-                        <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="auth-login-basic.html">
-                      <i class="bx bx-power-off me-2"></i>
-                      <span class="align-middle">Log Out</span>
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                      <i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
                     </a>
                   </li>
                 </ul>
@@ -425,6 +427,15 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js') }}"></script>
+
+    {{-- Notification --}}
+    <script>
+      document.getElementById("myAlert").style.display = "block";
+  
+      setTimeout(function() {
+        $("#myAlert").fadeOut();
+      }, 5000);
+    </script>
 
     
 @stack('js')

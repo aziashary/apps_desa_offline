@@ -121,25 +121,43 @@
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item">
-            <a href="index.html" class="menu-link">
+            <a href="{{ url('dashboardwarga') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
           </li>
 
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Profile</span>
+        </li>
           <li class="menu-item">
-            <a href="{{ url('dashboard-warga/profile') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Data Warga">Data Warga</div>
+            <a href="{{ url('dashboardwarga/profile') }}" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-user"></i>
+              <div data-i18n="Data Warga">Data Profile</div>
             </a>
           </li>
 
-          <li class="menu-item">
-            <a href="{{ url('dashboard-warga/pengajuan') }}" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Data Warga">Data Warga</div>
+          <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Pengajuan Surat</span>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-envelope"></i>
+            <div data-i18n="Surat Keterangan Miskin">Surat</div>
             </a>
-          </li>
+            <ul class="menu-sub">
+              <li class="menu-item">
+                  <a href="{{ url('dashboardwarga/pengajuan') }}" class="menu-link">
+                  <div data-i18n="Data Surat Keterangan Miskin">Pengajuan Surat</div>
+                  </a>
+              </li>
+              <li class="menu-item">
+                  <a href="{{ url('dashboardwarga/pengajuan/create') }}" class="menu-link">
+                  <div data-i18n="Tambah Surat Keterangan Miskin">Tambah Pengajuan</div>
+                  </a>
+              </li>
+            </ul>
+        </li>
               
             
           
@@ -152,7 +170,7 @@
       <div class="layout-page">
         <!-- Navbar -->
 
-        <nav
+        {{-- <nav
           class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center"
           id="layout-navbar"
         >
@@ -177,7 +195,7 @@
             </div> --}}
             <!-- /Search -->
 
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
+            {{-- <ul class="navbar-nav flex-row align-items-center ms-auto"> --}}
               <!-- Place this tag where you want the button to render. -->
               {{-- <li class="nav-item lh-1 me-3">
                 <a
@@ -192,7 +210,7 @@
               </li> --}}
 
               <!-- User -->
-              <li class="nav-item navbar-dropdown dropdown-user dropdown">
+              {{-- <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
                     <img src="{{ asset ('plugin/img/avatars/1.png') }}" alt class="w-px-40 h-auto rounded-circle" />
@@ -252,7 +270,7 @@
               <!--/ User -->
             </ul>
           </div>
-        </nav>
+        </nav> --}} 
 
         <!-- / Navbar -->
 

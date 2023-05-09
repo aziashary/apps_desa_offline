@@ -13,16 +13,18 @@
             @csrf
 
             <!-- Name -->
-            <div>
+            {{-- <div>
                 <x-label for="name" :value="__('Name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+            </div> --}}
 
-            <div>
-                <x-label for="username" :value="__('username')" />
+            <div class="mt-4">
+                <div class="col-md-6 {{ $errors->get('username') ? 'has-error' : 'tes' }}">
+                <x-label for="nik" :value="__('Username / NIK')" />
 
                 <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
+                </div>
             </div>
 
             <!-- Email Address -->
@@ -53,11 +55,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('Sudah daftar?') }}
                 </a>
 
                 <x-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Daftar') }}
                 </x-button>
             </div>
         </form>

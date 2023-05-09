@@ -17,7 +17,7 @@
 
             <!-- username Address -->
             <div>
-                <x-label for="username" :value="__('Username')" />
+                <x-label for="username" :value="__('Username / NIK')" />
 
                 <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
             </div>

@@ -18,9 +18,17 @@ class UserTableSeeder extends Seeder
         User::create([
             'name'=>'Admin',
             'username'=>'admindesa',
-            'email'=>'queensi.net@gmail.com',
+            'email'=>'admin.net@gmail.com',
             'password'=>Hash::make('12345678'),
             'level'=>1,
+        ]);
+
+        User::create([
+            'name'=>'Warga',
+            'username'=>3202321230,
+            'email'=>'warga.net@gmail.com',
+            'password'=>Hash::make('12345678'),
+            'level'=>2,
         ]);
     }
 }

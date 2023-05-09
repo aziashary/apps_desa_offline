@@ -17,7 +17,7 @@
                     Terdapat <span class="fw-bold">72</span> surat pengajuan hari ini. Silahkan cek surat pengajuan hari ini.
                   </p>
 
-                  <a href="javascript:;" class="btn btn-sm btn-outline-primary">Surat Pengajuan</a>
+                  <a href="{{ url('admindesa/SK/pengajuan_baru') }}" class="btn btn-sm btn-outline-primary">Surat Pengajuan</a>
                 </div>
               </div>
               <div class="col-sm-5 text-center text-sm-left">
@@ -429,7 +429,7 @@
           title: {
             text: 'SK'
           },
-          min: 5,
+          min: 2,
         },
         legend: {
           position: 'top',

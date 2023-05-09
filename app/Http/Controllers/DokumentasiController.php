@@ -64,7 +64,7 @@ class DokumentasiController extends Controller
         Detaildokumentasi::create($form_data);
 
      if($form_data){
-        return redirect('/dokumentasi/detail/'.$id_dokumentasi)->with('success','Berhasil Update Data');
+        return redirect('admindesaadmindesa/dokumentasi/detail/'.$id_dokumentasi)->with('success','Berhasil Update Data');
     }else{
         return back()->with('error','Gagal Update Data');
     }
@@ -94,7 +94,7 @@ class DokumentasiController extends Controller
      Dokumentasi::create($form_data);
 
      if($form_data){
-        return redirect('/dokumentasi')->with('success','Berhasil Tambah Data');
+        return redirect('admindesaadmindesa/dokumentasi')->with('success','Berhasil Tambah Data');
     }else{
         return back()->with('error','Gagal Tambah Data');
     }
@@ -128,7 +128,7 @@ class DokumentasiController extends Controller
      Dokumentasi::where('id_dokumentasi', $request->id_dokumentasi)->update($form_data);
 
      if($form_data){
-        return redirect('/dokumentasi')->with('success','Berhasil Update Data');
+        return redirect('admindesa/dokumentasi')->with('success','Berhasil Update Data');
     }else{
         return back()->with('error','Gagal Update Data');
     }
@@ -166,7 +166,7 @@ class DokumentasiController extends Controller
     {
         $destroy = Dokumentasi::where('id_dokumentasi',$id_dokumentasi)->delete();
 
-        return redirect('/dokumentasi')->with('success','Berhasil menghapus data');
+        return redirect('admindesa/dokumentasi')->with('success','Berhasil menghapus data');
     }
 
     public function deletedetail($id_detaildokumentasi)

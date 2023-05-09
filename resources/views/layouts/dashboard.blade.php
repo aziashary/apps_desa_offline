@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Desa CIARUTEUN ILIR</title>
+  <title>Desa GIRIMULYA</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -57,7 +57,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       <a href="#hero" class="logo"><img src="{{ asset ('template/foto/logo.png') }}" alt=""></a>
-      <h5 class="logo">Desa CIARUTEUN ILIR</h5>
+      <h5 class="logo">Desa GIRIMULYA</h5>
       <!-- Uncomment below if you prefer to use an image logo -->
       
 
@@ -68,12 +68,9 @@
           <!-- <li><a class="nav-link scrollto" href="#services">Pelayanan</a></li> -->
           <li><a class="nav-link scrollto " href="#portfolio">Dokumentasi</a></li>
           <li><a class="nav-link scrollto " href="#Aparaturdesa">Aparatur Desa</a></li>
-          <li><a class="nav-link scrollto " href="#BPD">BPD</a></li>
-          <li><a class="nav-link scrollto " href="#RT/RW">RT/RW</a></li>
-          <li><a class="nav-link scrollto " href="#LINMAS">Linmas</a></li>
-          <li><a class="nav-link scrollto " href="#LPM">LPM</a></li>
           <li><a class="nav-link scrollto" href="#struktur">Struktur Organisasi</a></li>
           <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('login') }}">Pelayanan Desa</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -84,7 +81,7 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to <span>Desa CIARUTEUN ILIR</span></h1>
+      <h1>Welcome to <span>Desa GIRIMULYA</span></h1>
       <h2>Membangun lebih baik</h2>
       <div class="d-flex">
         <a href="#about" class="btn-get-started scrollto">Get Started</a>
@@ -142,7 +139,7 @@
 
         <div class="section-title">
           <h2>Tentang Kami</h2>
-          <h3>Tentang Desa<span> CIARUTEUN ILIR<span>.</span></span></h3>
+          <h3>Tentang Desa<span> GIRIMULYA<span>.</span></span></h3>
         </div>
         @foreach($sejarah as $key)
         <div class="row">
@@ -208,47 +205,7 @@
       </div>
     </div>
 
-    <div class="section-title">
-          <h3>Data <span>Penduduk</span></h3>
-        </div>
-      <div class="container" data-aos="fade-up">
-       <br>
-        <div class="row">
-        <div class="col-md-12">
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-striped" id="table1">
-                  <thead>
-                    <tr align="center">
-                      <th align="center" style="width: 50px">No</th>
-                      <th>Nama</th>
-                      <th>RT / RW</th>
-                      <th>Pekerjaan</th>
-                      <th>Jenis Kelamin</th>
-                    </tr>
-                  </thead>
-                        <?php
-                        $no = 1;
-                        ?>
-                  <tbody>
-                    
-                        @foreach($warga as $wargadesa)
-                            <tr align="center">
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $wargadesa->nama_warga }}</td>
-                                <td>{{ $wargadesa->RT }} / {{ $wargadesa->RW }}</td>
-                                <td>{{ $wargadesa->jenis_pekerjaan }}</td>
-                                <td>{{ $wargadesa->jenis_kelamin }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-              </div>
-              <!-- /.card-body -->
-            </div>
+    
             <!-- /.card -->
           </div> 
         </div> 
@@ -410,7 +367,7 @@
 
         <div class="section-title">
           <h2>Dokumentasi</h2>
-          <h3>Galeri Desa <span>CIARUTEUN ILIR</span></h3>
+          <h3>Galeri Desa <span>GIRIMULYA</span></h3>
         </div>
      
         <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -448,7 +405,7 @@
 
         <div class="section-title">
           <h2>Aparatur Desa</h2>
-          <h3>Perangkat Desa <span>CIARUTEUN ILIR</span></h3>
+          <h3>Perangkat Desa <span>GIRIMULYA</span></h3>
         </div>
 
         <div class="row">
@@ -469,121 +426,17 @@
       </div>
     </section>
 
-    <section id="BPD" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>BPD</h2>
-          <h3>Badan Permusyawaratan Desa <span>CIARUTEUN ILIR</span></h3>
-        </div>
-
-        <div class="row">
-        @foreach($BPD as $keys)
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <div class="member-img">
-                <img src="aparaturdesa/fetch_image/{{ $keys->id_aparatur }}" class="img-fluid"  alt="" width="600" height="600">
-              </div>
-              <div class="member-info">
-                <h3>{{ $keys->nama_aparatur }}</h3>
-                <span>{{ $keys->nama_jabatan }}</span>
-              </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-
-    <section id="RT/RW" class="team section-bggreen">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>RT/RW Desa</h2>
-          <h3>RT/RW <span>CIARUTEUN ILIR</span></h3>
-        </div>
-
-        <div class="row">
-        @foreach($RT as $keys)
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <div class="member-img">
-                <img src="aparaturdesa/fetch_image/{{ $keys->id_aparatur }}" class="img-fluid"  alt="" width="600" height="600">
-              </div>
-              <div class="member-info">
-                <h3>{{ $keys->nama_aparatur }}</h3>
-                <span>{{ $keys->nama_jabatan }}</span>
-              </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-
-    <section id="LINMAS" class="team">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>LINMAS Desa</h2>
-          <h3>Perlindungan Masyarakat Desa <span>CIARUTEUN ILIR</span></h3>
-        </div>
-
-        <div class="row">
-        @foreach($LINMAS as $keys)
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <div class="member-img">
-                <img src="aparaturdesa/fetch_image/{{ $keys->id_aparatur }}" class="img-fluid"  alt="" width="600" height="600">
-              </div>
-              <div class="member-info">
-                <h3>{{ $keys->nama_aparatur }}</h3>
-                <span>{{ $keys->nama_jabatan }}</span>
-              </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-
-    <section id="LPM" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>LPM Desa</h2>
-          <h3>Lembaga Pemberdayaan Masyarakat Desa <span>CIARUTEUN ILIR</span></h3>
-        </div>
-
-        <div class="row">
-        @foreach($LPM as $keys)
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <div class="member-img">
-                <img src="aparaturdesa/fetch_image/{{ $keys->id_aparatur }}" class="img-fluid"  alt="" width="600" height="600">
-              </div>
-              <div class="member-info">
-                <h3>{{ $keys->nama_aparatur }}</h3>
-                <span>{{ $keys->nama_jabatan }}</span>
-              </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-    
     <section id="struktur" class="team">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h3>Struktur Organisasi Desa <span>CIARUTEUN ILIR</span></h3>
+          <h3>Struktur Organisasi Desa <span>GIRIMULYA</span></h3>
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
           <div class="col-lg-12" data-aos="fade-right" data-aos-delay="100">
             <img src="{{ asset ('template/foto/Kepala_Desa.png') }}" class="img-fluid" alt="">
           </div>
-        </div>
+        </div> --}}
 
 
       </div>
@@ -792,7 +645,7 @@
         <div class="row" data-aos="fade-up" data-aos-delay="100">
 
           <div class="col-lg-6 ">
-          <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=kantor desa CIARUTEUN ILIR&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://piratebay-proxys.com/">Piratebay</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
+          <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=kantor desa GIRIMULYA&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://piratebay-proxys.com/">Piratebay</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
         </div>
 
           <div class="col-lg-6">
@@ -881,7 +734,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>CIARUTEUN ILIR</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>GIRIMULYA</span></strong>. All Rights Reserved
       </div>
     </div>
   </footer><!-- End Footer -->

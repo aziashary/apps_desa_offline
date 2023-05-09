@@ -26,14 +26,15 @@
             <div class="form-group">
                 <label for="kategori_jabatan">Jabatan</label>
                 <select class="form-control" name='id_kategori_jabatan'>
-                <option value=''>Pilih Kategori Jabatan</option>
-                    <option value='JBTN1'>Jabatan</option>
+                <option value='' selected disabled>Pilih Kategori Jabatan</option>
+                    <option value='JBTN1'>Aparatur Desa</option>
                     <option value='JBTN2'>BPD</option>
                     <option value='JBTN3'>RT/RW</option>
                     <option value='JBTN4'>LINMAS</option>
                     <option value='JBTN5'>LPM</option>
                 </select>
             </div>
+            <br>
             <button type="submit" class="btn btn-success">Simpan</button>
             <a type="button" class="btn btn-secondary" href="{{ url('admindesa/jabatan') }}">Cancel</a>
         </form>

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('judul')
-<title>Edit Surat Keterangan Usaha - Aplikasi Surat Desa</title>
+<title>Edit Surat Keterangan - Aplikasi Surat Desa</title>
 @endsection
 
 @push('css')
@@ -14,13 +14,13 @@
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('admindesa/SK') }}">Data Surat Keterangan Usaha</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tambah Surat Keterangan Usaha</li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/SK') }}">Data Surat Keterangan </a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Surat Keterangan </li>
             </ol>
       
 
         <div class="card">
-            <h4 class="card-header">Tambah Surat Keterangan Usaha</h4>
+            <h4 class="card-header">Tambah Surat Keterangan </h4>
                 @foreach($data as $sk)
                 <div class="card-body">
                     <form method="POST" action="{{ url('admindesa/SK/update/'. $sk->id_sk) }}" enctype="multipart/form-data">

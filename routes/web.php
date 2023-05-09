@@ -15,6 +15,7 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardwargaController;
 use App\Http\Controllers\LoginwargaController;
+use App\Http\Controllers\KodeskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,9 @@ use App\Http\Controllers\LoginwargaController;
 //     return view('welcome');
 // });
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/detaildokumentasi/{id_dokumentasi}', [HomeController::class, 'detail'])->name('/detaildokumentasi');
 
@@ -47,17 +48,31 @@ Route::get('aparaturdesa/fetch_image/{id_aparatur}', [AparaturdesaController::cl
 Route::get('/warga-login', [LoginwargaController::class, 'showLoginForm'])->name('warga.login');
 Route::post('/warga-auth', [LoginwargaController::class, 'login']);
 
+// Ajax Form Otomatis
+Route::get('/get-form-input', [DashboardwargaController::class, 'getFormInput']);
+
 
 Route::get('/', [HomeController::class, 'index']);
 
 // Dashboard Warga
-Route::group(['prefix' => 'dashboardwarga', 'middleware' => ['auth:warga']], function () {
+Route::group(['prefix' => 'dashboardwarga', 'middleware' => 'isWarga'], function () {
     Route::get('/', [DashboardwargaController::class, 'index']);
+    Route::get('/profile', [DashboardwargaController::class, 'profile']);
+    Route::get('/pengajuan', [DashboardwargaController::class, 'pengajuan']);
+
+Route::group(['prefix' => 'pengajuan'], function () {
+    Route::get('/create', [DashboardwargaController::class, 'create']);
+    Route::post('/store', [DashboardwargaController::class, 'store']);
+    Route::get('/print/{id_pengajuan}', [DashboardwargaController::class, 'print']);
+    Route::get('/edit/{id_pengajuan}', [DashboardwargaController::class, 'edit']);
+    Route::get('/delete/{id_pengajuan}', [DashboardwargaController::class, 'delete']);
+    Route::patch('/update/{id_pengajuan}', [DashboardwargaController::class, 'update']);
+    });
 });
 
 // Admin Desa
-Route::group(['prefix' => 'admindesa'], function () {
-    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::group(['prefix' => 'warga'], function () {
     Route::get('/', [WargaController::class, 'index']);
@@ -81,11 +96,25 @@ Route::group(['prefix' => 'admindesa'], function () {
         Route::group(['prefix' => 'SK'], function () {
     Route::get('/', [SKcontroller::class, 'index']);
     Route::get('/create', [SKcontroller::class, 'create']);
+    Route::get('/pengajuan', [SKcontroller::class, 'pengajuan']);
+    Route::get('/pengajuan_baru', [SKcontroller::class, 'pengajuan_baru']);
+    Route::patch('/detail/{id_pengajuan}', [SKcontroller::class, 'detail']);
     Route::post('/store', [SKcontroller::class, 'store']);
     Route::get('/print/{id_sk}', [SKcontroller::class, 'print']);
     Route::get('/edit/{id_sk}', [SKcontroller::class, 'edit']);
     Route::get('/delete/{id_sk}', [SKcontroller::class, 'delete']);
     Route::patch('/update/{id_sk}', [SKcontroller::class, 'update']);
+        });
+
+        Route::group(['prefix' => 'kodesk'], function () {
+    Route::get('/', [Kodeskcontroller::class, 'index']);
+    Route::get('/editsk/{kodesk}', [Kodeskcontroller::class, 'editsk']);
+    Route::get('/edit/{id_kodesk}', [Kodeskcontroller::class, 'edit']);
+    Route::get('/create', [Kodeskcontroller::class, 'create']);
+    Route::get('/getketerangan', [Kodeskcontroller::class, 'getketerangan']);
+    Route::post('/store', [Kodeskcontroller::class, 'store']);
+    Route::patch('/update/{id_kodesk}', [Kodeskcontroller::class, 'update']);
+    Route::patch('/updatesk/{kodesk}', [Kodeskcontroller::class, 'updatesk']);
         });
 
         Route::group(['prefix' => 'sejarah'], function () {

@@ -18,6 +18,12 @@ class CreateKodeskTable extends Migration
             $table->string('kode_sk')->unique();
             $table->string('jenis_sk');
             $table->string('singkatan_sk');
+            $table->string('keterangan_1');
+            $table->string('keterangan_2')->nullable();
+            $table->string('keterangan_3')->nullable();
+            $table->string('keterangan_4')->nullable();
+            $table->string('file_name')->nullable();
+            $table->string('url_print')->nullable();
             $table->timestamps();
         });
     }

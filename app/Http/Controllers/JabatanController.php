@@ -54,7 +54,7 @@ class jabatanController extends Controller
      Jabatan::create($form_data);
 
      if($form_data){
-        return redirect('/jabatan')->with('success','Berhasil Tambah Data');
+        return redirect('admindesa/jabatan')->with('success','Berhasil Tambah Data');
     }else{
         return back()->with('error','Gagal Tambah Data');
     }
@@ -86,7 +86,7 @@ class jabatanController extends Controller
     Jabatan::where('id_jabatan', $request->id_jabatan)->update($form_data);
 
      if($form_data){
-        return redirect('/jabatan')->with('success','Berhasil Update Data');
+        return redirect('admindesa/jabatan')->with('success','Berhasil Update Data');
     }else{
         return back()->with('error','Gagal Update Data');
     }
@@ -96,7 +96,7 @@ class jabatanController extends Controller
     {
         $destroy = Jabatan::where('id_jabatan',$id_jabatan)->delete();
 
-        return redirect('/jabatan')->with('success','Berhasil menghapus data');
+        return redirect('admindesa/jabatan')->with('success','Berhasil menghapus data');
     }
 
     

@@ -61,7 +61,7 @@
             
 
             <button type="submit" class="btn btn-success">Simpan</button>
-            <a type="button" class="btn btn-secondary" href="{{ url('dokumentasi') }}">Cancel</a>
+            <a type="button" class="btn btn-secondary" href="{{ url('admindesa/dokumentasi') }}">Cancel</a>
         </div>
                     </div>
                 </div>

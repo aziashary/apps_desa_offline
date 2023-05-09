@@ -52,8 +52,9 @@
                 <label for="instagram_aparatur">Upload Foto</label><br>
                 <input type="file" name='foto_aparatur'>
             </div>
+            <br>
             <button type="submit" class="btn btn-success">Simpan</button>
-            <a type="button" class="btn btn-secondary" href="{{ url('aparaturdesa') }}">Cancel</a>
+            <a type="button" class="btn btn-secondary" href="{{ url('admindesa/aparaturdesa') }}">Cancel</a>
             @endforeach
         </form>
     </div> 

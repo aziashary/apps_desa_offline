@@ -32,8 +32,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+         // Check the user level and redirect accordingly
+        if (auth()->user()->level == 1) {
+            return redirect()->intended(RouteServiceProvider::ADMIN);
+        } else if (auth()->user()->level == 2) {
+            return redirect()->intended(RouteServiceProvider::WARGA);
+        }
+
+        // Default redirect to intended route
         return redirect()->intended(RouteServiceProvider::HOME);
-    }
+        }
 
     /**
      * Destroy an authenticated session.

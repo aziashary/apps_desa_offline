@@ -19,12 +19,21 @@ class KodeskTableSeeder extends Seeder
             'kode_sk' => 510,
             'jenis_sk' => 'Surat Keterangan Usaha',
             'singkatan_sk'=>'SKU',
+            'keterangan_1'=>'Jenis Usaha',
+            'keterangan_2' => 'Alamat Usaha',
+            'file_name' => 'sku.xlsx',
+            'url_print' => "plugin\xls\sku.xlsx"
+
         ]);
 
         Kodesk::create([
             'kode_sk' => 140,
             'jenis_sk' => 'Surat Keterangan Keluarga Miskin',
             'singkatan_sk'=>'SKKM',
+            'keterangan_1'=>'Keterangan Surat',
+            'keterangan_2' => 'Usulan Surat',
+            'file_name' => 'skkm.xlsx',
+            'url_print' => "plugin\xls\skkm.xlsx"
         ]);
     }
 }

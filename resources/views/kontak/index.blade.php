@@ -6,17 +6,14 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-md-6">
-            <div class="card card-default">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="fas fa-bullhorn"></i>
-                  Data Kontak
-                </h3>
-              </div>
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="{{ url('admindesa/kontak') }}">Data Kontak</a></li>
+      </ol>
+  <div class="card">
+      <h4 class="card-header">Data Kontak</h4>
+          <div class="card-body">
              
               <!-- /.card-header -->
       <div class="card-body ">

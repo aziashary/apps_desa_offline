@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Warga;
+use Illuminate\Support\Facades\Hash;
 
 class WargaController extends Controller
 {
@@ -37,6 +38,9 @@ class WargaController extends Controller
 
     function store(Request $request)
     {
+        $this->validate($request, [
+            'nik'=>'required|max:30|unique:warga,nik',
+        ]);
 
      $form_data = array(
       'nik'  => $request->nik,
@@ -50,12 +54,14 @@ class WargaController extends Controller
       'jenis_pekerjaan'  => $request->jenis_pekerjaan,
       'jenis_kelamin'  => $request->jenis_kelamin,
       'agama'  => $request->agama,
+      'email' => $request->email,
+      'password' => Hash::make($request->nik),
      );
 
      Warga::create($form_data);
 
         if($form_data){
-            return redirect('/warga')->with('success','Berhasil Tambah Data');
+            return redirect('admindesa/warga')->with('success','Berhasil Tambah Data');
         }else{
             return back()->with('error','Gagal Tambah Data');
         }
@@ -76,12 +82,14 @@ class WargaController extends Controller
       'jenis_pekerjaan'  => $request->jenis_pekerjaan,
       'jenis_kelamin'  => $request->jenis_kelamin,
       'agama'  => $request->agama,
+      'email' => $request->email,
+      'password' => Hash::make('12345678'),
      );
 
      Warga::where('id_warga', $id_warga)->update($form_data);
 
         if($form_data){
-            return redirect('/warga')->with('success','Berhasil Tambah Data');
+            return redirect('admindesa/warga')->with('success','Berhasil Tambah Data Warga');
         }else{
             return back()->with('error','Gagal Tambah Data');
         }
@@ -92,7 +100,7 @@ class WargaController extends Controller
      $destroy = Warga::where('id_warga', $id_warga)->delete();
 
         if($destroy){
-        return redirect('/warga')->with('success','Berhasil menghapus data');
+        return redirect('admindesa/warga')->with('success','Berhasil menghapus data');
         }else{
             return back()->with('error','Gagal Hapus Data');
         }

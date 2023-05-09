@@ -18,13 +18,27 @@
                 <li class="breadcrumb-item active" aria-current="page">Data Warga</li>
             </ol>
       
-
+            
         <div class="card">
             <h4 class="card-header">Data Warga</h4>
                 <div class="card-body">
                     <div class="btn-group">
                         <a href="{{ url('admindesa/warga/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Warga</i></a>
                     </div>
+
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            @endif
+
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>

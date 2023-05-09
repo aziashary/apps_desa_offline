@@ -62,7 +62,7 @@ class AparaturdesaController extends Controller
      Aparaturdesa::create($form_data);
 
      if($form_data){
-        return redirect('/aparaturdesa')->with('success','Berhasil Tambah Data');
+        return redirect('/admindesa/aparaturdesa/')->with('success','Berhasil Tambah Data');
     }else{
         return back()->with('error','Gagal Tambah Data');
     }
@@ -103,7 +103,7 @@ class AparaturdesaController extends Controller
      Aparaturdesa::where('id_aparatur', $request->id_aparatur)->update($form_data);
 
      if($form_data){
-        return redirect('/aparaturdesa')->with('success','Berhasil Update Data');
+        return redirect('/admindesa/aparaturdesa/')->with('success','Berhasil Update Data');
     }else{
         return back()->with('error','Gagal Update Data');
     }
@@ -127,7 +127,7 @@ class AparaturdesaController extends Controller
     {
         $destroy = Aparaturdesa::where('id_aparatur',$id_aparatur)->delete();
 
-        return redirect('/aparaturdesa')->with('success','Berhasil menghapus data');
+        return redirect('/admindesa/aparaturdesa/')->with('success','Berhasil menghapus data');
     }
 
     

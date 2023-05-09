@@ -25,6 +25,7 @@ class WargaFactory extends Factory
     {
         return [
             'nik' => $this->faker->unique->numberBetween(3202321230, 3202332000),
+            'no_kk' => $this->faker->numberBetween(3202321130, 3202321330),
             'nama_warga' => $this->faker->name,
             'tempat_lahir' => $this->faker->randomElement(['Bogor','Jakarta','Bandung','Yogyakarta']),
             'tanggal_lahir' => $this->faker->date(),
