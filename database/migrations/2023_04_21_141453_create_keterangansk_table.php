@@ -15,20 +15,23 @@ class CreateKeteranganskTable extends Migration
     {
         Schema::create('keterangansk', function (Blueprint $table) {
             $table->bigIncrements('id_keterangansk');
-            $table->string('kode_sk');
-            $table->string('no_sk');
-            $table->string('nik');
-            $table->string('nama_warga');
-            $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
-            $table->string('alamat');
-            $table->string('jenis_pekerjaan');
-            $table->string('agama');
-            $table->string('keterangan_1');
+            $table->string('kode_sk')->nullable();
+            $table->string('no_sk')->nullable();
+            $table->string('nik')->nullable();
+            $table->string('nama_warga')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->string('tanggal_lahir')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('jenis_pekerjaan')->nullable();
+            $table->string('agama')->nullable();
+            $table->string('keterangan_1')->nullable();
             $table->string('keterangan_2')->nullable();
             $table->string('keterangan_3')->nullable();
             $table->string('keterangan_4')->nullable();
-            $table->string('tanggal');
+            $table->string('jabatan')->nullable();
+            $table->string('ttd_pengaju')->nullable();
+            $table->string('ttd_kepala')->nullable();
+            $table->string('tanggal')->nullable();
 
             $table->timestamps();
         });

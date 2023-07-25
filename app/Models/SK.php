@@ -31,4 +31,8 @@ class SK extends Model
     {
         return $this->hasOne('App\Models\Kodesk', 'kode_sk', 'kode_sk');
     }
+    public function kets()
+    {
+        return $this->hasOne('App\Models\Keterangansk', 'kode_sk', 'kode_sk');
+    }
 }

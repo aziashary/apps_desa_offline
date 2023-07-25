@@ -35,7 +35,7 @@
          </div>
          <div class="panel-body">
          <br />
-         <form method="post" action="{{ url('sejarah/insert_image') }}"  enctype="multipart/form-data">
+         <form method="post" action="{{ url('admindesa/sejarah/insert_image') }}"  enctype="multipart/form-data">
           @csrf
           <div class="form-group">
           <div class="row">
@@ -75,7 +75,7 @@
                   @foreach($data as $row)
                   <tr>
                    <td>
-                    <img src="fetch_image/{{ $row->id_sejarah }}"  class="img-thumbnail" width="75" />
+                    <img src="admindesa/fetch_image/{{ $row->id_sejarah }}"  class="img-thumbnail" width="75" />
                    </td>
                    <td>{{ $row->isi_sejarah }}</td>
                   </tr>

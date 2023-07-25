@@ -16,6 +16,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardwargaController;
 use App\Http\Controllers\LoginwargaController;
 use App\Http\Controllers\KodeskController;
+use App\Http\Controllers\AkunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,15 @@ Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
     Route::patch('/update/{id_warga}', [WargaController::class, 'update']);
         });
 
+         Route::group(['prefix' => 'akun'], function () {
+    Route::get('/', [AkunController::class, 'index']);
+    Route::get('/admin', [AkunController::class, 'admin']);
+    Route::post('/store', [AkunController::class, 'store']);
+    Route::get('/delete/{id_aparatur}', [Akuncontroller::class, 'delete']);
+    Route::patch('/updateadmin/{id_aparatur}', [AkunController::class, 'updateadmin']);
+    Route::patch('/updatewarga/{id_warga}', [AkunController::class, 'updatewarga']);
+        });
+
         Route::group(['prefix' => 'SKKM'], function () {
     Route::get('/', [SKKMController::class, 'index']);
     Route::get('/create', [SKKMController::class, 'create']);
@@ -100,7 +110,7 @@ Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
     Route::get('/pengajuan_baru', [SKcontroller::class, 'pengajuan_baru']);
     Route::patch('/detail/{id_pengajuan}', [SKcontroller::class, 'detail']);
     Route::post('/store', [SKcontroller::class, 'store']);
-    Route::get('/print/{id_sk}', [SKcontroller::class, 'print']);
+    Route::post('/print', [SKcontroller::class, 'print']);
     Route::get('/edit/{id_sk}', [SKcontroller::class, 'edit']);
     Route::get('/delete/{id_sk}', [SKcontroller::class, 'delete']);
     Route::patch('/update/{id_sk}', [SKcontroller::class, 'update']);

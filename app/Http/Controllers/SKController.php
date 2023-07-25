@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Keterangansk;
 use Illuminate\Romans\Support\Facades\IntToRoman as IntToRomanFacade;
 
 use Illuminate\Http\Request;
 use App\Models\SK;
 use App\Models\Kodesk;
 use App\Models\Warga;
+use App\Models\Aparaturdesa;
 use App\Models\Pengajuan;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Settings;
@@ -16,8 +19,9 @@ class SKController extends Controller
 {
     function index()
     { 
-     $data = SK::orderBy('no_sk', 'ASC')->with('wargas')->get();
-     return view('sk.index', compact('data'));
+     $data = SK::orderBy('no_sk', 'ASC')->with('wargas')->with('sks')->get();
+     $aparaturdesa = Aparaturdesa::where('kategori_jabatan','Aparatur Desa')->orderBy('id_jabatan', 'ASC')->get();
+     return view('sk.index', compact('data','aparaturdesa'));
     }
 
     function create()
@@ -97,13 +101,13 @@ class SKController extends Controller
         } 
     }
 
-    function print($id_sk)
+    function print(Request $request)
     { 
     //  $data = SK::where('id_sk', $id_sk)->with('wargas')->get();
     //  return view('sk.print', compact('data'));
 
     // Load the XLS file
-    $data = SK::where('id_sk', $id_sk)->with('sks')->first();
+    $data = SK::where('id_sk', $request->id_sk)->with('sks')->first();
     $inputFileType = 'Xls';
     $inputFileName = public_path($data->sks->url_print);
     $spreadsheet = IOFactory::load($inputFileName);
@@ -113,25 +117,78 @@ class SKController extends Controller
 
     // Retrieve data from the database using Laravel's query builder
     // Data SK
-    $item = SK::where('id_sk', $id_sk)->with('wargas')->first();
+    $item = SK::where('id_sk', $request->id_sk)->with('wargas')->first();
+    $kets = Keterangansk::where('kode_sk', $data->kode_sk)->first();
+    $aparatur = Aparaturdesa::where('id_aparatur', $request->ttd_kepala)->first();
     
     // Keterangan SK
     
 
     // Insert the data into the appropriate cells in the XLS file
-    $worksheet->setCellValue('F8', $item->no_sk);
+    if (!empty($kets->no_sk)) {
+        $worksheet->setCellValue($kets->no_sk, $item->no_sk);
+    }
+    
+    if (!empty($kets->nama_warga)) {
+        $worksheet->setCellValue($kets->nama_warga, $item->wargas->nama_warga);
+    }
 
-    $worksheet->setCellValue('F13', $item->wargas->nama_warga);
-    $worksheet->setCellValue('F14', $item->wargas->nik);
-    $worksheet->setCellValue('F15', $item->wargas->tempat_lahir, $item->wargas->tanggal_lahir);
-    $worksheet->setCellValue('F16', $item->wargas->jenis_pekerjaan);
-    $worksheet->setCellValue('F17', $item->wargas->agama);
-    $worksheet->setCellValue('F18', $item->wargas->alamat);
+    if (!empty($kets->tanggal_lahir)) {
+        $worksheet->setCellValue($kets->tanggal_lahir, date('d-m-Y', strtotime($item->wargas->tanggal_lahir)));
+    }
 
-    $worksheet->setCellValue('F22', $item->keterangan_1);
-    $worksheet->setCellValue('F23', $item->keterangan_2);
+    if (!empty($kets->tempat_lahir)) {
+        $worksheet->setCellValue($kets->tempat_lahir, $item->wargas->tempat_lahir);
+    }
+    
+    if (!empty($kets->nik)) {
+        $worksheet->setCellValue($kets->nik, $item->wargas->nik);
+    }
+    
+    if (!empty($kets->jenis_pekerjaan)) {
+        $worksheet->setCellValue($kets->jenis_pekerjaan, $item->wargas->jenis_pekerjaan);
+    }
+    
+    if (!empty($kets->agama)) {
+        $worksheet->setCellValue($kets->agama, $item->wargas->agama);
+    }
+    
+    if (!empty($kets->alamat)) {
+        $worksheet->setCellValue($kets->alamat, $item->wargas->alamat);
+    }
+    
+    if (!empty($kets->keterangan_1)) {
+        $worksheet->setCellValue($kets->keterangan_1, $item->keterangan_1);
+    }
+    
+    if (!empty($kets->keterangan_2)) {
+        $worksheet->setCellValue($kets->keterangan_2, $item->keterangan_2);
+    }
+    
+    if (!empty($kets->keterangan_3)) {
+        $worksheet->setCellValue($kets->keterangan_3, $item->keterangan_3);
+    }
+    
+    if (!empty($kets->keterangan_4)) {
+        $worksheet->setCellValue($kets->keterangan_4, $item->keterangan_4);
+    }
+    
+    if (!empty($kets->tanggal)) {
+    $worksheet->setCellValue($kets->tanggal, date('d-m-Y', strtotime($item->created_at)));
+    }
 
-    $worksheet->setCellValue('J27', date('d-m-Y', strtotime($item->created_at)));
+    if (!empty($kets->ttd_kepala)) {
+        $worksheet->setCellValue($kets->ttd_kepala, $aparatur->nama_aparatur);
+    }
+
+    if (!empty($kets->jabatan)) {
+        $worksheet->setCellValue($kets->jabatan, $aparatur->nama_jabatan);
+    }
+    
+    if (!empty($kets->ttd_pengaju)) {
+        $worksheet->setCellValue($kets->ttd_pengaju, $item->wargas->nama_warga);
+    }
+    
     
 
 
@@ -161,10 +218,13 @@ class SKController extends Controller
     function edit($id_sk)
     {
      $item = Warga::orderBy('nama_warga', 'ASC')->get();
-     $data = SK::where('id_sk', $id_sk)->get();
+     $data = SK::where('id_sk', $id_sk)->with('wargas')->with('sks')->get();
+     $kodesk = SK::where('id_sk', $id_sk)->first();
+     $kode = Kodesk::where('kode_sk', $kodesk->kode_sk)->get();
         return view('sk.edit', [
         'data' => $data,
         'item' => $item,
+        'kode' => $kode,
         ]);
     }
 

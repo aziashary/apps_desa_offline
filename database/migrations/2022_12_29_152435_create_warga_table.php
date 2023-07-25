@@ -15,7 +15,7 @@ class CreateWargaTable extends Migration
     {
         Schema::create('warga', function (Blueprint $table) {
             $table->bigIncrements('id_warga');
-            $table->string('no_kk');
+            $table->string('no_kk')->nullable();
             $table->string('nik')->unique();
             $table->string('nama_warga');
             $table->string('tempat_lahir');
@@ -27,9 +27,8 @@ class CreateWargaTable extends Migration
             $table->string('jenis_pekerjaan');
             $table->string('jenis_kelamin');
             $table->string('agama');
-            $table->string('email')->unique()->nullable();
-            $table->string('password');
-            $table->boolean('isWarga')->default(true);
+            $table->string('email')->nullable();
+            $table->boolean('level')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

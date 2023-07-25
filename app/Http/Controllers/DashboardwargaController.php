@@ -48,9 +48,14 @@ class DashboardwargaController extends Controller
     public function pengajuan()
     {
         $username = auth()->user()->username;
-        $id_warga= Warga::where('nik', $username)->pluck('id_warga')->first();
+        $no_kk= Warga::where('nik', $username)->pluck('no_kk')->first();
 
-        $data = Pengajuan::where('id_warga', $id_warga)->orderBy('no_pengajuan', 'ASC')->with('wargas')->get();
+        $data = Pengajuan::join('warga', 'pengajuan.id_warga', '=', 'warga.id_warga')
+                ->where('warga.no_kk', '=', $no_kk)
+                ->orderBy('no_pengajuan', 'ASC')
+                ->with('wargas')
+                ->get();
+
         return view('lamanwarga.index', compact('data'));
     }
 
@@ -89,7 +94,7 @@ class DashboardwargaController extends Controller
                                 <input type='text' class='form-control' id='keterangan_2' name='keterangan_2'  maxlength='100' required>
                             </div>
                             <br>";
-                    } elseif ($kodesk->keterangan_3) {
+                    } if ($kodesk->keterangan_3) {
                         $formInput .= "
                             <h6>{$kodesk->keterangan_3}</h6>
                             <small class='text-muted'><i>Maks. 100 Karakter</i></small>
@@ -97,7 +102,7 @@ class DashboardwargaController extends Controller
                                 <input type='text' class='form-control' id='keterangan_3' name='keterangan_3'  maxlength='100' required>
                             </div>
                             <br>";
-                    } elseif ($kodesk->keterangan_4) {
+                    } if ($kodesk->keterangan_4) {
                         $formInput .= "
                             <h6>{$kodesk->keterangan_4}</h6>
                             <small class='text-muted'><i>Maks. 100 Karakter</i></small>

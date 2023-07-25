@@ -26,7 +26,9 @@ class Keterangansk extends Model
         'keterangan_3',
         'keterangan_4',
         'tanggal',
-
+        'ttd_pengaju',
+        'ttd_kepala',
+        'jabatan',
     ]; 
     public function sks()
     {

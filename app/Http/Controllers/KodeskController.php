@@ -106,7 +106,7 @@ class KodeskController extends Controller
         $file = $request->file('file');
         $namafile = $file->getClientOriginalName();
         $request->file->move(public_path('plugin/xls'),$namafile);
-        $url = 'public\plugin\xls'. $namafile;
+        $url = "plugin/xls/". $namafile;
 
      $form_data = array(
       'kode_sk'  => $request->kode_sk,
@@ -145,7 +145,7 @@ class KodeskController extends Controller
             $file = $request->file('file');
             $namafile = $file->getClientOriginalName();
             $request->file->move(public_path('plugin/xls'),$namafile);
-            $url = 'public\plugin\xls'. $namafile;
+            $url = 'plugin/xls/'. $namafile;
         }
 
         $form_data = array(
@@ -187,7 +187,10 @@ class KodeskController extends Controller
         'keterangan_2'=> $request->keterangan_2,
         'keterangan_3'=> $request->keterangan_3,
         'keterangan_4'=> $request->keterangan_4,
-        'tanggal'=> $request->tanggal
+        'tanggal'=> $request->tanggal,
+        'jabatan'=> $request->jabatan,
+        'ttd_pengaju'=> $request->ttd_pengaju,
+        'ttd_kepala'=> $request->ttd_kepala
               
            );
         

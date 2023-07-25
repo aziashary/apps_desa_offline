@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Aparaturdesa;
 use App\Models\Jabatan;
+use App\Models\User;
 use Illuminate\Support\Facades\Response;
 use Image;
 
@@ -100,7 +101,12 @@ class AparaturdesaController extends Controller
             );
         }
 
+        $updateadmin = array(
+            'name' => $request->nama_aparatur,
+        );
+
      Aparaturdesa::where('id_aparatur', $request->id_aparatur)->update($form_data);
+     User::where('id_aparatur', $id_aparatur)->update($updateadmin);
 
      if($form_data){
         return redirect('/admindesa/aparaturdesa/')->with('success','Berhasil Update Data');

@@ -45,7 +45,6 @@ class WargaFactory extends Factory
             ]),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki','Perempuan']),
             'agama' => $this->faker->randomElement(['Islam','Kristen']),
-            'password'=> Hash::make('12345678'),
             'email' => $this->faker->email
         ];
     }

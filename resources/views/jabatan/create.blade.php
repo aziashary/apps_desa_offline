@@ -19,11 +19,11 @@
                 <div class="card-body">
             <form method="POST" action="{{ url('admindesa/jabatan/store') }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="nama_jabatan">Nama Jabatan</label>
                 <input type="text" class="form-control" name="nama_jabatan" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="kategori_jabatan">Jabatan</label>
                 <select class="form-control" name='id_kategori_jabatan'>
                 <option value='' selected disabled>Pilih Kategori Jabatan</option>

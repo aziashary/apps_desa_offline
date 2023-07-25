@@ -33,11 +33,11 @@
             @foreach ($data as $jabatan)
             <form method="POST" action="{{ url('admindesa/jabatan/update/'. $jabatan->id_jabatan) }}" enctype="multipart/form-data">
             @csrf {{ method_field('PATCH') }}
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="nama_jabatan">Nama Jabatan</label>
                 <input type="text" class="form-control" name="nama_jabatan" value="{{ $jabatan->nama_jabatan}}" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="kategori_jabatan">Kategori Jabatan</label>
                 <select class="form-control" name='id_kategori_jabatan'>
                 <option value='{{ $jabatan->id_kategori_jabatan}}'>{{ $jabatan->kategori_jabatan}}</option>

@@ -28,6 +28,8 @@ class KeteranganskTableSeeder extends Seeder
             'keterangan_1' => 'F22',
             'keterangan_2' => 'F33',
             'tanggal' => 'J27',
+            'ttd_kepala' => 'G34',
+            'jabatan' => 'G28',
           
 
         ]);
@@ -45,6 +47,8 @@ class KeteranganskTableSeeder extends Seeder
             'keterangan_1' => 'F22',
             'keterangan_2' => 'F33',
             'tanggal' => 'J27',
+            'ttd_kepala' => 'G34',
+            'jabatan' => 'G28',
         ]);
     }
 }

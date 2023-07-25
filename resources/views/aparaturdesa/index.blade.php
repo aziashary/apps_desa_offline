@@ -19,7 +19,7 @@
                 <div class="card-body">
         <div class="mb-4">
           <div class="btn-group">
-              <a href="{{ url('admindesa/admindesa/aparaturdesa/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Aparatur Desa</i></a>
+              <a href="{{ url('admindesa/aparaturdesa/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Aparatur Desa</i></a>
           </div>
       </div>
       <table class="table table-striped" id="table1">
@@ -46,10 +46,11 @@
                                 <td>{{ $aparaturdesa->nama_jabatan }}</td>
                                 <td>{{ $aparaturdesa->facebook_aparatur }}</td>
                                 <td>{{ $aparaturdesa->instagram_aparatur }}</td>
-                                <td><img src="admindesa/aparaturdesa/fetch_image/{{ $aparaturdesa->id_aparatur }}"  class="img-thumbnail" width="75" /></td>
+                                <td><img src="aparaturdesa/fetch_image/{{ $aparaturdesa->id_aparatur }}"  class="img-thumbnail" /></td>
                                 <td align="center" >
                                     <a href="{{ URL('admindesa/aparaturdesa/edit/'. $aparaturdesa->id_aparatur) }}" class="btn btn-success">Edit</a>
-                                    <a href="{{ URL('admindesa/aparaturdesa/delete/'. $aparaturdesa->id_aparatur) }}" class="btn btn-danger">Hapus</a>
+                                    <a href="{{ URL('admindesa/aparaturdesa/delete/'. $aparaturdesa->id_aparatur) }}" 
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus data {{ $aparaturdesa->nama_aparatur }}?')" class="btn btn-danger">Hapus</a>
                                 </td>
                             </tr>
                         @endforeach

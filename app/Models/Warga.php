@@ -29,22 +29,20 @@ class Warga extends AuthenticatableUser implements Authenticatable
         'jenis_kelamin',
         'agama',
         'email',
-        'password',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // protected $hidden = [
+    //     'remember_token',
+    // ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdmin()
-    {
-        return false;
-    }
+    // public function isAdmin()
+    // {
+    //     return false;
+    // }
 
     public function isWarga()
     {

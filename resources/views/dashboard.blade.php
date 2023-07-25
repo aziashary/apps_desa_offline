@@ -7,14 +7,14 @@
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
+        <div class="col-lg-12 mb-4 order-0">
           <div class="card">
             <div class="d-flex align-items-end row">
               <div class="col-sm-7">
                 <div class="card-body">
                   <h5 class="card-title text-success">Selamat Datang di Aplikasi Pelayanan Umum</h5>
                   <p class="mb-4">
-                    Terdapat <span class="fw-bold">72</span> surat pengajuan hari ini. Silahkan cek surat pengajuan hari ini.
+                    Terdapat <span class="fw-bold">{{ $pengajuanproses }}</span> surat pengajuan hari ini. Silahkan cek surat pengajuan hari ini.
                   </p>
 
                   <a href="{{ url('admindesa/SK/pengajuan_baru') }}" class="btn btn-sm btn-outline-primary">Surat Pengajuan</a>
@@ -23,7 +23,7 @@
               <div class="col-sm-5 text-center text-sm-left">
                 <div class="card-body pb-0 px-0 px-md-4">
                   <img
-                    src="{{ asset ('plugin/img/illustrations/man-with-laptop-light.png') }}"
+                    src="{{ asset ('plugin/img/illustrations/7822.png') }}"
                     height="140"
                     alt="View Badge User"
                     data-app-dark-img="{{ asset ('plugin/img/illustrations/man-with-laptop-dark.png') }}"
@@ -35,47 +35,62 @@
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-4 order-1">
+        {{-- <div class="col-lg-4 col-md-4 order-1"> --}}
           <div class="row">
-                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                  <div class="col-lg-4 mb-4 order-0">
                     <div class="card">
                         <div class="card-body">
                             <li class="d-flex mb-0 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset ('plugin/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
+                                <img src="{{ asset ('plugin/img/icons/email.png') }}" alt="User" class="rounded" />
                                 </div>
                                 <div class="me-10">
-                                    <span>Total SK Terealisasi Desa</span>
-                                    <h2 class="text-nowrap mb-1 text-primary">200</h2>
+                                    <span>Total SK Terealisasi </span>
+                                    <h2 class="text-nowrap mb-1 text-primary">{{ $totalsk }}</h2>
                                     <h5 class="text-nowrap mb-1">Surat</h5> 
                                 </div>
                             </li>
                         </div>
                     </div>
-                  </div>
+                 </div>
 
-            
-
-                <div class="col-lg-6 col-md-12 col-6 mb-4">
+                 <div class="col-lg-4 mb-4 order-0">
                     <div class="card">
                         <div class="card-body">
                             <li class="d-flex mb-0 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset ('plugin/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
+                                <img src="{{ asset ('plugin/img/icons/new-email.png') }}" alt="User" class="rounded" />
                                 </div>
                                 <div class="me-10">
-                                    <span>Total Pengajuan SK Tersisa</span>
-                                    <h2 class="text-nowrap mb-1 text-success">100</h2>
+                                    <span>Total Pengajuan SK </span>
+                                    <h2 class="text-nowrap mb-1 text-primary">{{ $pengajuan }}</h2>
                                     <h5 class="text-nowrap mb-1">Surat</h5> 
                                 </div>
                             </li>
                         </div>
                     </div>
+                 </div>
+
+                 <div class="col-lg-4 mb-4 order-0">
+                  <div class="card">
+                      <div class="card-body">
+                          <li class="d-flex mb-0 pb-1">
+                              <div class="avatar flex-shrink-0 me-3">
+                              <img src="{{ asset ('plugin/img/icons/business.png') }}" alt="User" class="rounded" />
+                              </div>
+                              <div class="me-10">
+                                  <span>Total Template SK </span>
+                                  <h2 class="text-nowrap mb-1 text-primary">{{ $totalkodesk }}</h2>
+                                  <h5 class="text-nowrap mb-1">Surat</h5> 
+                              </div>
+                          </li>
+                      </div>
                   </div>
-          </div>
-        </div>
+               </div>
+           </div>
+        {{-- </div> --}}
         <!-- Progres Bulanan SK -->
-        <div class="col-12 col-lg-7 order-2 order-md-3 order-lg-2 mb-4">
+        <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
           <div class="card">
             <div class="row row-bordered g-0">
                 <h5 class="card-header m-0 me-2 pb-3">Progres Bulanan SK</h5>
@@ -84,10 +99,10 @@
           </div>
         </div>
         <!--/ Perbandingan Total Jenis SK -->
-        <div class="col-12 col-lg-5 order-2 order-md-3 order-lg-2 mb-4">
+        <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
           <div class="card">
             <div class="row row-bordered g-0">
-              <h5 class="card-header m-0 me-2 pb-3">Perbandingan Total Jenis SK</h5>
+              <h5 class="card-header m-0 me-2 pb-3">Perbandingan Total SK berdasarkan Jenis SK</h5>
               <div id="barsk"></div>
            </div>
           </div>
@@ -102,22 +117,22 @@
                     <ul class="p-0 m-0">
                       <li class="d-flex mb-4 pb-1">
                         <div class="avatar flex-shrink-0 me-3">
-                          <img src="{{ asset ('plugin/img/icons/unicons/paypal.png') }}" alt="User" class="rounded" />
+                          <img src="{{ asset ('plugin/img/icons/men.png') }}" alt="User" class="rounded" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                           <div class="me-2">
                             <small class="text-muted d-block mb-1">Penduduk</small>
-                            <h4 class="mb-0">Laki Laki</h4>
+                            <h4 class="mb-0">Pria</h4>
                           </div>
                           <div class="user-progress d-flex align-items-center gap-1">
-                            <h6 class="mb-0">200</h6>
+                            <h6 class="mb-0">{{ $laki }}</h6>
                             <span class="text-muted">Orang</span>
                           </div>
                         </div>
                       </li>
                       <li class="d-flex mb-4 pb-1">
                         <div class="avatar flex-shrink-0 me-3">
-                          <img src="{{ asset ('plugin/img/icons/unicons/wallet.png') }}" alt="User" class="rounded" />
+                          <img src="{{ asset ('plugin/img/icons/woman.png') }}" alt="User" class="rounded" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                           <div class="me-2">
@@ -125,22 +140,22 @@
                             <h4 class="mb-0">Wanita</h4>
                           </div>
                           <div class="user-progress d-flex align-items-center gap-1">
-                            <h6 class="mb-0">300</h6>
+                            <h6 class="mb-0">{{ $perempuan }}</h6>
                             <span class="text-muted">Orang</span>
                           </div>
                         </div>
                       </li>
                       <li class="d-flex mb-4 pb-1">
                         <div class="avatar flex-shrink-0 me-3">
-                          <img src="{{ asset ('plugin/img/icons/unicons/chart.png') }}" alt="User" class="rounded" />
+                          <img src="{{ asset ('plugin/img/icons/children.png') }}" alt="User" class="rounded" />
                         </div>
                         <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                           <div class="me-2">
                             <small class="text-muted d-block mb-1">Penduduk</small>
-                            <h4 class="mb-0">Anak - Anak</h4>
+                            <h4 class="mb-0">Anak</h4>
                           </div>
                           <div class="user-progress d-flex align-items-center gap-1">
-                            <h6 class="mb-0">100</h6>
+                            <h6 class="mb-0">{{ $anak }}</h6>
                             <span class="text-muted">Orang</span>
                           </div>
                         </div>
@@ -151,16 +166,16 @@
               </div>
 
           <!-- Progres Bulanan SK -->
-        <div class="col-12 col-lg-3 order-2 order-md-3 order-lg-2 mb-4">
+        {{-- <div class="col-12 col-lg-3 order-2 order-md-3 order-lg-2 mb-4">
           <div class="card">
             <div class="row row-bordered g-0">
                 <h5 class="card-header m-0 me-2 pb-3">Perbandingan JK</h5>
                 <div id="donutjk"></div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <!--/ Perbandingan Total Jenis SK -->
-        <div class="col-4 col-lg-6 order-2 order-md-3 order-lg-2 mb-4">
+        <div class="col-4 col-lg-9 order-2 order-md-3 order-lg-2 mb-4">
           <div class="card">
             <div class="row row-bordered g-0">
               <h5 class="card-header m-0 me-2 pb-3">Perbandingan Pekerjaan</h5>

@@ -52,9 +52,10 @@
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-          <a href="index.html" class="app-brand-link">
+          <a href="#" class="app-brand-link">
             <span class="app-brand-logo demo">
-              <svg
+              <img src="{{ asset ('template/foto/logo.png') }}" width="35" height="40">
+              {{-- <svg
                 width="25"
                 viewBox="0 0 25 42"
                 version="1.1"
@@ -106,9 +107,9 @@
                     </g>
                   </g>
                 </g>
-              </svg>
+              </svg> --}}
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+            <span class="demo menu-text fw-bolder ms-2">Ciaruteun Ilir</span>
           </a>
 
           <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -163,6 +164,25 @@
                 <li class="menu-item">
                     <a href="{{ url('admindesa/jabatan') }}" class="menu-link">
                     <div data-i18n="Data Jabatan Desa">Data Jabatan Desa</div>
+                    </a>
+                </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Struktur Desa">Akun</div>
+                </a>
+                <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ url('admindesa/akun/admin') }}" class="menu-link">
+                    <div data-i18n="Data admin">Admin</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ url('admindesa/akun/') }}" class="menu-link">
+                    <div data-i18n="Data warga">User Warga</div>
                     </a>
                 </li>
                 </ul>
@@ -302,8 +322,9 @@
           </div>
 
           <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+            <span class="fw-bolder" style="width: 100%;">Admin Pelayanan Desa Ciaruteun Ilir</span>
             <!-- Search -->
-            <div class="navbar-nav align-items-center">
+            {{-- <div class="navbar-nav align-items-center">
               <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search fs-4 lh-0"></i>
                 <input
@@ -313,12 +334,13 @@
                   aria-label="Search..."
                 />
               </div>
-            </div>
+            </div> --}}
             <!-- /Search -->
 
-            <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <ul class="navbar-nav d-flex align-items-center ms-auto">
+              <span class="fw-bolder" style="width: 100%;">{{ Auth::user()->name }}</span>
               <!-- Place this tag where you want the button to render. -->
-              <li class="nav-item lh-1 me-3">
+              {{-- <li class="nav-item lh-1 me-3">
                 <a
                   class="github-button"
                   href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -328,17 +350,17 @@
                   aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                   >Star</a
                 >
-              </li>
+              </li> --}}
 
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                  <div class="avatar avatar-online">
-                    <i class="bx bx-building"></i>
-                  </div>
+                  {{-- <div class="avatar avatar-online"> --}}
+                    <i class="bx bx-user"></i>
+                  {{-- </div> --}}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
+                  {{-- <li>
                     <a class="dropdown-item" href="#">
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
@@ -355,7 +377,7 @@
                   </li>
                   <li>
                     <div class="dropdown-divider"></div>
-                  </li>
+                  </li> --}}
                   <li>
                     <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                       <i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>

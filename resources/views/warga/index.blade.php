@@ -21,10 +21,11 @@
             
         <div class="card">
             <h4 class="card-header">Data Warga</h4>
-                <div class="card-body">
+                <div class="card-body mb-3">
                     <div class="btn-group">
                         <a href="{{ url('admindesa/warga/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Warga</i></a>
                     </div>
+                    <br>
 
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -63,8 +64,9 @@
                             <td>{{ $warga->jenis_kelamin }}</td>
                             <td>{{ $warga->jenis_pekerjaan }}</td>
                             <td align="center" >
-                                <a href="{{ URL('warga/edit/'. $warga->id_warga) }}" class="btn btn-success">Edit</a>
-                                <a href="{{ URL('warga/delete/'. $warga->id_warga) }}" class="btn btn-danger">Hapus</a>
+                                <a href="{{ URL('admindesa/warga/edit/'. $warga->id_warga) }}" class="btn btn-success">Edit</a>
+                                <a href="{{ URL('admindesa/warga/delete/' . $warga->id_warga) }}" class="btn btn-danger"  
+                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data {{ $warga->nama_warga }}?')" >Hapus</a>
                             </td>
                         </tr>
                     @endforeach
@@ -73,7 +75,7 @@
                 </div>
         </div>
     </div>
-
+ 
 </section>
 </div>
 @endsection
