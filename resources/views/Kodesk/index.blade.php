@@ -60,7 +60,7 @@
                                 Edit Detail SK
                             </a>
                            
-                            <a class="btn btn-secondary" href="{{ URL('admindesa/kodesk/editsk/'. $kodesk->kode_sk) }}">
+                            <a class="btn btn-secondary" href="{{ URL('admindesa/kodesk/editsk/'. $kodesk->id_kodesk) }}">
                                 Edit Template SK
                             </a>
                         </td>

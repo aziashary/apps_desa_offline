@@ -15,11 +15,11 @@ class KodeskController extends Controller
      return view('kodesk.index', compact('data'));
     }
 
-    public function editsk($kodesk)
+    public function editsk($id_kodesk)
     {
         // mengambil data surat dengan id yang dipilih
-        $data = Keterangansk::where('kode_sk', $kodesk)->get();
-        $item = Kodesk::where('kode_sk', $kodesk)->first();
+        $data = Keterangansk::where('id_kodesk', $id_kodesk)->get();
+        $item = Kodesk::where('id_kodesk', $id_kodesk)->first();
 
         // mengirim data surat ke view edit.blade.php
         return view('kodesk.editsk', compact('data','item'));
@@ -135,17 +135,17 @@ class KodeskController extends Controller
         $form = array(
             'kode_sk' => $request->kode_sk,
         );
-        Keterangansk::where('kode_sk', $kodesk->kode_sk)->update($form);
+        Keterangansk::where('id_kodesk', $id_kodesk)->update($form);
 
         if ($request->hasFile('file')) {
             // Hapus file yang sudah ada sebelumnya
-            Storage::delete('public/plugin/xls/' . $kodesk->file_name);
+            Storage::delete("plugin/xls/". $kodesk->file_name);
 
             // Upload File Baru
             $file = $request->file('file');
             $namafile = $file->getClientOriginalName();
             $request->file->move(public_path('plugin/xls'),$namafile);
-            $url = 'plugin/xls/'. $namafile;
+            $url = "plugin/xls/". $namafile;
         }
 
         $form_data = array(
@@ -170,11 +170,11 @@ class KodeskController extends Controller
         }
     }
 
-    function updatesk($kodesk, request $request)
+    function updatesk($id_kodesk, request $request)
     {
 
         $form_data = array(
-        'kode_sk' => $kodesk,
+        'kode_sk' => $request->kode_sk,
         'no_sk' => $request->no_sk,
         'nik'=> $request->nik,
         'nama_warga'=> $request->nama_warga,
@@ -194,12 +194,12 @@ class KodeskController extends Controller
               
            );
         
-        $cekkode=Keterangansk::where('kode_sk', $kodesk)->get();
+        $cekkode=Keterangansk::where('id_kodesk', $id_kodesk)->get();
 
         if ($cekkode->isEmpty()) {
             $kode=Keterangansk::create($form_data);
         }else{
-            $kode=Keterangansk::where('kode_sk', $kodesk)->update($form_data);
+            $kode=Keterangansk::where('id_kodesk', $id_kodesk)->update($form_data);
         }
 
         if($kode){

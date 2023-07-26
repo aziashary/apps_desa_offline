@@ -27,6 +27,6 @@ class Kodesk extends Model
 
     public function kets()
     {
-        return $this->hasOne('App\Models\Keterangansk', 'kode_sk', 'kode_sk');
+        return $this->hasOne('App\Models\Keterangansk', 'id_kodesk', 'id_kodesk');
     }
 }

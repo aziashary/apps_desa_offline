@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardwargaController;
 use App\Http\Controllers\LoginwargaController;
 use App\Http\Controllers\KodeskController;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,12 @@ use App\Http\Controllers\AkunController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::get('/', [AuthenticatedSessionController::class, 'create'])
+                ->name('login');
 
 Route::get('/detaildokumentasi/{id_dokumentasi}', [HomeController::class, 'detail'])->name('/detaildokumentasi');
 
@@ -53,7 +57,7 @@ Route::post('/warga-auth', [LoginwargaController::class, 'login']);
 Route::get('/get-form-input', [DashboardwargaController::class, 'getFormInput']);
 
 
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index']);
 
 // Dashboard Warga
 Route::group(['prefix' => 'dashboardwarga', 'middleware' => 'isWarga'], function () {
@@ -93,15 +97,15 @@ Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
     Route::patch('/updatewarga/{id_warga}', [AkunController::class, 'updatewarga']);
         });
 
-        Route::group(['prefix' => 'SKKM'], function () {
-    Route::get('/', [SKKMController::class, 'index']);
-    Route::get('/create', [SKKMController::class, 'create']);
-    Route::post('/store', [SKKMController::class, 'store']);
-    Route::get('/print/{id_skkm}', [SKKMController::class, 'print']);
-    Route::get('/edit/{id_skkm}', [SKKMController::class, 'edit']);
-    Route::get('/delete/{id_skkm}', [SKKMController::class, 'delete']);
-    Route::patch('/update/{id_skkm}', [SKKMController::class, 'update']);
-        });
+    //     Route::group(['prefix' => 'SKKM'], function () {
+    // Route::get('/', [SKKMController::class, 'index']);
+    // Route::get('/create', [SKKMController::class, 'create']);
+    // Route::post('/store', [SKKMController::class, 'store']);
+    // Route::get('/print/{id_skkm}', [SKKMController::class, 'print']);
+    // Route::get('/edit/{id_skkm}', [SKKMController::class, 'edit']);
+    // Route::get('/delete/{id_skkm}', [SKKMController::class, 'delete']);
+    // Route::patch('/update/{id_skkm}', [SKKMController::class, 'update']);
+    //     });
 
         Route::group(['prefix' => 'SK'], function () {
     Route::get('/', [SKcontroller::class, 'index']);
@@ -111,6 +115,7 @@ Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
     Route::patch('/detail/{id_pengajuan}', [SKcontroller::class, 'detail']);
     Route::post('/store', [SKcontroller::class, 'store']);
     Route::post('/print', [SKcontroller::class, 'print']);
+    Route::post('/excel', [SKcontroller::class, 'excel']);
     Route::get('/edit/{id_sk}', [SKcontroller::class, 'edit']);
     Route::get('/delete/{id_sk}', [SKcontroller::class, 'delete']);
     Route::patch('/update/{id_sk}', [SKcontroller::class, 'update']);
@@ -118,13 +123,13 @@ Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
 
         Route::group(['prefix' => 'kodesk'], function () {
     Route::get('/', [Kodeskcontroller::class, 'index']);
-    Route::get('/editsk/{kodesk}', [Kodeskcontroller::class, 'editsk']);
+    Route::get('/editsk/{id_kodesk}', [Kodeskcontroller::class, 'editsk']);
     Route::get('/edit/{id_kodesk}', [Kodeskcontroller::class, 'edit']);
     Route::get('/create', [Kodeskcontroller::class, 'create']);
     Route::get('/getketerangan', [Kodeskcontroller::class, 'getketerangan']);
     Route::post('/store', [Kodeskcontroller::class, 'store']);
     Route::patch('/update/{id_kodesk}', [Kodeskcontroller::class, 'update']);
-    Route::patch('/updatesk/{kodesk}', [Kodeskcontroller::class, 'updatesk']);
+    Route::patch('/updatesk/{id_kodesk}', [Kodeskcontroller::class, 'updatesk']);
         });
 
         Route::group(['prefix' => 'sejarah'], function () {

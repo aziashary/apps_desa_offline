@@ -136,7 +136,7 @@
                     <select class="form-select" name="aksi">
                     <option value="print">Print Langsung</option>
                     <option value="excel">Download Excel</option>
-                    <option value="pdf">Download PDF</option>
+                    {{-- <option value="pdf">Download PDF</option> --}}
                     </select>
                 </div>
             </div>

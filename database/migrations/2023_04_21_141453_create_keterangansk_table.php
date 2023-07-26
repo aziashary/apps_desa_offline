@@ -15,6 +15,7 @@ class CreateKeteranganskTable extends Migration
     {
         Schema::create('keterangansk', function (Blueprint $table) {
             $table->bigIncrements('id_keterangansk');
+            $table->string('id_kodesk')->unique();
             $table->string('kode_sk')->nullable();
             $table->string('no_sk')->nullable();
             $table->string('nik')->nullable();

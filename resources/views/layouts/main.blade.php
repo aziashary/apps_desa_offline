@@ -7,7 +7,7 @@
     @yield('judul')
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset ('plugin/img/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset ('template/foto/logo.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -261,7 +261,7 @@
         </li>
 
             {{-- Data Informasi --}}
-            <li class="menu-header small text-uppercase">
+            {{-- <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Data Informasi Web Desa</span>
             </li>
 
@@ -298,7 +298,7 @@
                   <i class="menu-icon tf-icons bx  bx-message-rounded-minus"></i>
                   <div data-i18n="Pesan dan Komentar">Pesan dan Komentar</div>
                 </a>
-            </li>
+            </li> --}}
               
             
           

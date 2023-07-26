@@ -11,9 +11,11 @@ use App\Models\Kodesk;
 use App\Models\Warga;
 use App\Models\Aparaturdesa;
 use App\Models\Pengajuan;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use PhpOffice\PhpSpreadsheet\Settings;
 use PhpOffice\PhpSpreadsheet\Writer\Html;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Writer\Pdf\Tcpdf;
 
 class SKController extends Controller
 {
@@ -213,7 +215,112 @@ class SKController extends Controller
           </html>';
 }
 
+    function excel(Request $request)
+    { 
+    //  $data = SK::where('id_sk', $id_sk)->with('wargas')->get();
+    //  return view('sk.print', compact('data'));
+
+    // Load the XLS file
+    $data = SK::where('id_sk', $request->id_sk)->with('sks')->first();
+    $inputFileType = 'Xls';
+    $inputFileName = public_path($data->sks->url_print);
+    $spreadsheet = IOFactory::load($inputFileName);
+
+    // Get the active sheet of the XLS file
+    $worksheet = $spreadsheet->getActiveSheet();
+
+    // Retrieve data from the database using Laravel's query builder
+    // Data SK
+    $item = SK::where('id_sk', $request->id_sk)->with('wargas')->first();
+    $kets = Keterangansk::where('kode_sk', $data->kode_sk)->first();
+    $aparatur = Aparaturdesa::where('id_aparatur', $request->ttd_kepala)->first();
     
+    // Keterangan SK
+    $namafile = $data->sks->singkatan_sk . ' - ' . $item->wargas->nama_warga . ' - ' . $item->no_sk;
+
+    // Insert the data into the appropriate cells in the XLS file
+    if (!empty($kets->no_sk)) {
+        $worksheet->setCellValue($kets->no_sk, $item->no_sk);
+    }
+    
+    if (!empty($kets->nama_warga)) {
+        $worksheet->setCellValue($kets->nama_warga, $item->wargas->nama_warga);
+    }
+
+    if (!empty($kets->tanggal_lahir)) {
+        $worksheet->setCellValue($kets->tanggal_lahir, date('d-m-Y', strtotime($item->wargas->tanggal_lahir)));
+    }
+
+    if (!empty($kets->tempat_lahir)) {
+        $worksheet->setCellValue($kets->tempat_lahir, $item->wargas->tempat_lahir);
+    }
+    
+    if (!empty($kets->nik)) {
+        $worksheet->setCellValue($kets->nik, $item->wargas->nik);
+    }
+    
+    if (!empty($kets->jenis_pekerjaan)) {
+        $worksheet->setCellValue($kets->jenis_pekerjaan, $item->wargas->jenis_pekerjaan);
+    }
+    
+    if (!empty($kets->agama)) {
+        $worksheet->setCellValue($kets->agama, $item->wargas->agama);
+    }
+    
+    if (!empty($kets->alamat)) {
+        $worksheet->setCellValue($kets->alamat, $item->wargas->alamat);
+    }
+    
+    if (!empty($kets->keterangan_1)) {
+        $worksheet->setCellValue($kets->keterangan_1, $item->keterangan_1);
+    }
+    
+    if (!empty($kets->keterangan_2)) {
+        $worksheet->setCellValue($kets->keterangan_2, $item->keterangan_2);
+    }
+    
+    if (!empty($kets->keterangan_3)) {
+        $worksheet->setCellValue($kets->keterangan_3, $item->keterangan_3);
+    }
+    
+    if (!empty($kets->keterangan_4)) {
+        $worksheet->setCellValue($kets->keterangan_4, $item->keterangan_4);
+    }
+    
+    if (!empty($kets->tanggal)) {
+    $worksheet->setCellValue($kets->tanggal, date('d-m-Y', strtotime($item->created_at)));
+    }
+
+    if (!empty($kets->ttd_kepala)) {
+        $worksheet->setCellValue($kets->ttd_kepala, $aparatur->nama_aparatur);
+    }
+
+    if (!empty($kets->jabatan)) {
+        $worksheet->setCellValue($kets->jabatan, $aparatur->nama_jabatan);
+    }
+    
+    if (!empty($kets->ttd_pengaju)) {
+        $worksheet->setCellValue($kets->ttd_pengaju, $item->wargas->nama_warga);
+    }
+    
+    
+
+
+    // Simpan file Excel yang telah diperbarui dalam memory
+    ob_start();
+    $writer = new Xls($spreadsheet);
+    $writer->save('php://output');
+    $excelData = ob_get_clean();
+
+    // Set the appropriate headers for file download
+    $headers = [
+        'Content-Type' => 'application/vnd.ms-excel',
+        'Content-Disposition' => 'attachment; filename="' . $namafile . '.xls"',
+    ];
+
+    // Menggunakan response()->make() untuk mengirimkan file sebagai respons unduhan dari data yang disimpan dalam memory
+    return response()->make($excelData, 200, $headers);
+}
 
     function edit($id_sk)
     {

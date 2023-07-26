@@ -20,11 +20,12 @@
             <div class="card">
                 <h4 class="card-header">Edit Template {{ $item->jenis_sk }} </h4>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('admindesa/kodesk/updatesk/'. $item->kode_sk) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('admindesa/kodesk/updatesk/'. $item->id_kodesk) }}" enctype="multipart/form-data">
                         @csrf {{ method_field('PATCH') }}
                         <div class="row">
                             <div class="card-body">
                                 <div class="mb-3 row">
+                                    <input type="hidden" name="kode_sk" value="{{ $item->kode_sk }}">
                                     <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Nomor SK</b></label>
                                       <div class="col-md-2">
                                           <select class="choices form-select" name="no_sk">

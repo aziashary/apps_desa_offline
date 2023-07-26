@@ -45,6 +45,7 @@ class SKFactory extends Factory
         for ($i = 0; $i < 10; $i++) {
         return [
             'no_sk' => $this->faker->randomElement(['510','140'])." /"." ".$this->faker->unique()->numberBetween(1, 500)."  "."/ ".$returnValue." / ".$yearNow,
+            'id_kodesk' => $this->faker->randomElement([1,2]),
             'kode_sk' => $this->faker->randomElement([510,140]),
             'jenis_sk' => $this->faker->randomElement(['Surat Keterangan Usaha','Surat Keterangan Keluarga Miskin']),
             'id_warga' => $this->faker->numberBetween(1, 500),

@@ -12,6 +12,7 @@ class Keterangansk extends Model
     
     protected $fillable = [
         'id_keterangansk',
+        'id_kodesk',
         'kode_sk',
         'no_sk',
         'nik',
@@ -32,6 +33,6 @@ class Keterangansk extends Model
     ]; 
     public function sks()
     {
-        return $this->hasOne('App\Models\Kodesk', 'kode_sk', 'kode_sk');
+        return $this->hasOne('App\Models\Kodesk', 'id_kodesk', 'id_kodesk');
     }
 }

@@ -28,9 +28,9 @@
                       <th style="width: 50px">No</th>
                       <th >Nama</th>
                       <th>Jabatan</th>
-                      <th>Facebook</th>
+                      {{-- <th>Facebook</th> --}}
                       <th>Instagram</th>
-                      <th>Foto</th>
+                      {{-- <th>Foto</th> --}}
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -44,9 +44,9 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $aparaturdesa->nama_aparatur }}</td>
                                 <td>{{ $aparaturdesa->nama_jabatan }}</td>
-                                <td>{{ $aparaturdesa->facebook_aparatur }}</td>
+                                {{-- <td>{{ $aparaturdesa->facebook_aparatur }}</td> --}}
                                 <td>{{ $aparaturdesa->instagram_aparatur }}</td>
-                                <td><img src="aparaturdesa/fetch_image/{{ $aparaturdesa->id_aparatur }}"  class="img-thumbnail" /></td>
+                                {{-- <td><img src="aparaturdesa/fetch_image/{{ $aparaturdesa->id_aparatur }}"  class="img-thumbnail" /></td> --}}
                                 <td align="center" >
                                     <a href="{{ URL('admindesa/aparaturdesa/edit/'. $aparaturdesa->id_aparatur) }}" class="btn btn-success">Edit</a>
                                     <a href="{{ URL('admindesa/aparaturdesa/delete/'. $aparaturdesa->id_aparatur) }}" 

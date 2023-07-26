@@ -15,6 +15,7 @@ class CreateSkTable extends Migration
     {
         Schema::create('sk', function (Blueprint $table) {
             $table->bigIncrements('id_sk');
+            $table->string('id_kodesk');
             $table->string('kode_sk');
             $table->string('jenis_sk');
             $table->string('no_sk')->unique();
