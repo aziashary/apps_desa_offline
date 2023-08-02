@@ -23,30 +23,30 @@ class WargaFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'nik' => $this->faker->unique->numberBetween(3202321230, 3202332000),
-            'no_kk' => $this->faker->numberBetween(3202321130, 3202321330),
-            'nama_warga' => $this->faker->name,
-            'tempat_lahir' => $this->faker->randomElement(['Bogor','Jakarta','Bandung','Yogyakarta']),
-            'tanggal_lahir' => $this->faker->date(),
-            'RT' => $this->faker->numberBetween(1, 15),
-            'RW' => $this->faker->numberBetween(1, 15),
-            'desa' => 'Ciaruteun Ilir',
-            'alamat' => $this->faker->address,
-            'jenis_pekerjaan' => $this->faker->randomElement([
-                'Belum/Tidak Bekerja',
-                'Aparatur/Pejabat Negara',
-                'Tenaga Pengajar',
-                'Wiraswasta',
-                'Wirausaha',
-                'Pensiunan',
-                'Pelajar',
-                'Mahasiswa',
-            ]),
-            'jenis_kelamin' => $this->faker->randomElement(['Laki-laki','Perempuan']),
-            'agama' => $this->faker->randomElement(['Islam','Kristen']),
-            'email' => $this->faker->email
-        ];
+        // return [
+        //     'nik' => $this->faker->unique->numberBetween(3202321230, 3202332000),
+        //     'no_kk' => $this->faker->numberBetween(3202321130, 3202321330),
+        //     'nama_warga' => $this->faker->name,
+        //     'tempat_lahir' => $this->faker->randomElement(['Bogor','Jakarta','Bandung','Yogyakarta']),
+        //     'tanggal_lahir' => $this->faker->date(),
+        //     'RT' => $this->faker->numberBetween(1, 15),
+        //     'RW' => $this->faker->numberBetween(1, 15),
+        //     'desa' => 'Ciaruteun Ilir',
+        //     'alamat' => $this->faker->address,
+        //     'jenis_pekerjaan' => $this->faker->randomElement([
+        //         'Belum/Tidak Bekerja',
+        //         'Aparatur/Pejabat Negara',
+        //         'Tenaga Pengajar',
+        //         'Wiraswasta',
+        //         'Wirausaha',
+        //         'Pensiunan',
+        //         'Pelajar',
+        //         'Mahasiswa',
+        //     ]),
+        //     'jenis_kelamin' => $this->faker->randomElement(['Laki-laki','Perempuan']),
+        //     'agama' => $this->faker->randomElement(['Islam','Kristen']),
+        //     'email' => $this->faker->email
+        // ];
     }
 }
 
