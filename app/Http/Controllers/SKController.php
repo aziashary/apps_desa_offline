@@ -356,12 +356,13 @@ class SKController extends Controller
         $yearNow = date('Y');
         $id_sk = SK::latest('id_sk')->select('id_sk')->value('id_sk');
         $no_sk = ($request->kode_sk)." /"."  ".($id_sk+1)."  "."/ ".$returnValue." / ".$yearNow;
-        $jenis_sk = Kodesk::where('kode_sk', $request->kode_sk)->pluck('jenis_sk')->first();
+        $jenis_sk = Kodesk::where('kode_sk', $request->kode_sk)->first();
 
      $form_data = array(
       'no_sk'  => $no_sk,
       'kode_sk' => $request->kode_sk,
-      'jenis_sk' => $jenis_sk,
+      'jenis_sk' => $jenis_sk->jenis_sk,
+      'id_kodesk' => $jenis_sk->id_kodesk,
       'id_warga'  => $request->id_warga,
       'keterangan_1'  => $request->keterangan_1,
       'keterangan_2'  => $request->keterangan_2,
