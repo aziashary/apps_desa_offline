@@ -63,13 +63,17 @@
                             <td style="width: 70px;">{{ $no++ }}</td>
                             <td>{{ $aparatur->name }}</td>
                             <td style="width: 400px;">{{ $aparatur->username }}</td>
-                            <td align="center" style="width: 400px;" >
+                           
+                                <td align="center" style="width: 400px;">
                                     <button type="button" class="btn btn-primary" data-id="{{ $aparatur->id_aparatur }}" data-bs-toggle="modal" 
                                         data-bs-target="#confirmModal{{ $aparatur->id_aparatur }}">
                                         Edit
                                     </button>
-                                <a href="#" class="btn btn-danger" onclick="confirmDelete('{{ URL('admindesa/akun/delete/' . $aparatur->id_aparatur) }}')">Hapus Akses</a>
-                            </td>
+                                    @if($aparatur->username !== 'admindesa')
+                                    <a href="#" class="btn btn-danger" onclick="confirmDelete('{{ URL('admindesa/akun/delete/' . $aparatur->id_aparatur) }}')">Hapus Akses</a>
+                                    @endif
+                                </td>
+                            
                         </tr>
                     @endforeach
                     </tbody>

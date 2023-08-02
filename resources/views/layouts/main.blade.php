@@ -169,6 +169,7 @@
                 </ul>
             </li>
 
+            @if(auth()->user()->username == 'admindesa')
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user"></i>
@@ -180,13 +181,14 @@
                     <div data-i18n="Data admin">Admin</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                     <a href="{{ url('admindesa/akun/') }}" class="menu-link">
                     <div data-i18n="Data warga">User Warga</div>
                     </a>
-                </li>
+                </li> --}}
                 </ul>
             </li>
+            @endif
 
             {{-- Aplikasi Surat --}}
             <li class="menu-header small text-uppercase">
@@ -234,7 +236,7 @@
                 </ul>
             </li>
 
-            <li class="menu-item">
+            {{-- <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bxl-product-hunt"></i>
               <div data-i18n="Struktur Desa">Data Pengajuan</div>
@@ -251,7 +253,7 @@
                     </a>
                 </li>
               </ul>
-          </li>
+          </li> --}}
 
           <li class="menu-item">
             <a href="{{ url('admindesa/kodesk/') }}" class="menu-link">

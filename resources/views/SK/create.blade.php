@@ -22,6 +22,12 @@
         <div class="card">
             <h4 class="card-header">Tambah Surat Keterangan </h4>
                 <div class="card-body">
+                    <div class="mb-4">
+                        <div class="btn-group">
+                            <a href="{{ url('admindesa/warga/create') }}" class="center btn btn-gradient btn-primary" title="Tambah Data">Tambah Data Warga </i></a>
+                        </div>
+                        <br>
+                    </div>
                     <form method="POST" action="{{ url('admindesa/SK/store') }}" enctype="multipart/form-data">
                         @csrf
                     <div class="row">

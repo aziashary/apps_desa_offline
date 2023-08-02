@@ -36,7 +36,7 @@
                             </select>
                         </div>
                     </div>
-                        <div class="col-md-12">
+                        {{-- <div class="col-md-12">
                             <div class="mb-3">
                             <label for="facebook_aparatur">Facebook</label>
                             <input type="text" class="form-control" name="facebook_aparatur" >
@@ -47,13 +47,13 @@
                             <label for="instagram_aparatur">Instagram</label>
                             <input type="text" class="form-control" name="instagram_aparatur" >
                         </div>
-                    </div>
-                        <div class="col-md-12">
+                    </div> --}}
+                        {{-- <div class="col-md-12">
                             <div class="mb-3">
                             <label for="instagram_aparatur">Upload Foto</label><br>
                             <input type="file" name='foto_aparatur' required>
                         </div>
-                    </div>
+                    </div> --}}
                         <br>
                         <button type="submit" class="btn btn-success">Simpan</button>
                         <a type="button" class="btn btn-secondary" href="{{ url('admindesa/aparaturdesa') }}">Cancel</a>
