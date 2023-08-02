@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     
-    \App\Models\SKKM::factory()->times(100)->create();
-    \App\Models\SK::factory()->times(100)->create();
-    \App\Models\Pengajuan::factory()->times(100)->create();
-    \App\Models\Warga::factory()->times(500)->create();
+    // \App\Models\SKKM::factory()->times(100)->create();
+    // \App\Models\SK::factory()->times(100)->create();
+    // \App\Models\Pengajuan::factory()->times(100)->create();
+    // \App\Models\Warga::factory()->times(500)->create();
     $this->call(UserTableSeeder::class);
     $this->call(KodeskTableSeeder::class);
     $this->call(KeteranganskTableSeeder::class);
