@@ -11,13 +11,13 @@
     <div class="container-xxl flex-grow-1 container-p-y">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('admindesa/dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('admindesa/jabatan') }}">Data Jabatan</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Edit Data Jabatan</li>
+                <li class="breadcrumb-item"><a href="{{ url('admindesa/aparaturdesa') }}">Data Aparatur Desa</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Data Aparatur Desa</li>
             </ol>
       
 
         <div class="card">
-            <h4 class="card-header">Edit Jabatan</h4>
+            <h4 class="card-header">Edit Aparatur Desa</h4>
                 <div class="card-body">
         @foreach ($data as $aparaturdesa)
             <form method="POST" action="{{ url('admindesa/aparaturdesa/update/'. $aparaturdesa->id_aparatur) }}" enctype="multipart/form-data">

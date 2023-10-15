@@ -144,6 +144,11 @@
                     </a>
                 </li>
                 <li class="menu-item">
+                  <a href="{{ url('admindesa/warga/kartu-keluarga') }}" class="menu-link">
+                  <div data-i18n="Data Warga">Data Kartu Keluarga</div>
+                  </a>
+              </li>
+                <li class="menu-item">
                     <a href="{{ url('admindesa/warga/create') }}" class="menu-link">
                     <div data-i18n="Tambah Warga">Tambah Warga</div>
                     </a>

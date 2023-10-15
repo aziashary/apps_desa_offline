@@ -55,6 +55,7 @@ Route::post('/warga-auth', [LoginwargaController::class, 'login']);
 
 // Ajax Form Otomatis
 Route::get('/get-form-input', [DashboardwargaController::class, 'getFormInput']);
+Route::get('/get-warga-by-no-kk', [WargaController::class, 'getnokk']);
 
 
 // Route::get('/', [HomeController::class, 'index']);
@@ -81,11 +82,14 @@ Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
 
         Route::group(['prefix' => 'warga'], function () {
     Route::get('/', [WargaController::class, 'index']);
+    Route::get('/kartu-keluarga', [WargaController::class, 'kk']);
     Route::get('/create', [WargaController::class, 'create']);
     Route::post('/store', [WargaController::class, 'store']);
     Route::get('/edit/{id_warga}', [WargaController::class, 'edit']);
+    Route::get('/editkk/{no_kk}', [WargaController::class, 'editkk']);
     Route::get('/delete/{id_warga}', [Wargacontroller::class, 'delete']);
     Route::patch('/update/{id_warga}', [WargaController::class, 'update']);
+    Route::patch('/updatekk/{no_kk}', [WargaController::class, 'updatekk']);
         });
 
          Route::group(['prefix' => 'akun'], function () {

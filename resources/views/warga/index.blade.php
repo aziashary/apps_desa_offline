@@ -48,6 +48,7 @@
                             <th>Nama</th>
                             <th>Jenis Kelamin</th>
                             <th>Jenis Pekerjaan</th>
+                            <th>Umur</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -63,6 +64,7 @@
                             <td>{{ $warga->nama_warga }}</td>
                             <td>{{ $warga->jenis_kelamin }}</td>
                             <td>{{ $warga->jenis_pekerjaan }}</td>
+                            <td>{{ \Carbon::parse($warga->tanggal_lahir)->age }}</td>
                             <td align="center" >
                                 <a href="{{ URL('admindesa/warga/edit/'. $warga->id_warga) }}" class="btn btn-success">Edit</a>
                                 <a href="{{ URL('admindesa/warga/delete/' . $warga->id_warga) }}" class="btn btn-danger"  

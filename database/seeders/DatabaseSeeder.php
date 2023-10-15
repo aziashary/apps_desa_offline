@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
     // \App\Models\SKKM::factory()->times(100)->create();
     // \App\Models\SK::factory()->times(100)->create();
     // \App\Models\Pengajuan::factory()->times(100)->create();
-    // \App\Models\Warga::factory()->times(500)->create();
+    \App\Models\Warga::factory()->times(100)->create();
+    \App\Models\Kartukeluarga::factory()->times(20)->create();
     $this->call(UserTableSeeder::class);
     $this->call(KodeskTableSeeder::class);
     $this->call(KeteranganskTableSeeder::class);

@@ -105,8 +105,8 @@ class KodeskController extends Controller
 
         $file = $request->file('file');
         $namafile = $file->getClientOriginalName();
-        $request->file->move(public_path('plugin/xls'),$namafile);
-        $url = "plugin/xls/". $namafile;
+        $request->file->move(public_path('plugin\xls'),$namafile);
+        $url = "plugin\\xls\\". $namafile;
 
      $form_data = array(
       'kode_sk'  => $request->kode_sk,
@@ -119,8 +119,16 @@ class KodeskController extends Controller
         'keterangan_3'  => $request->keterangan_3,
         'keterangan_4'  => $request->keterangan_4,
      );
-    
+
      $kode=Kodesk::create($form_data);
+
+     $id_kodesk = Kodesk::latest('id_kodesk')->select('id_kodesk')->value('id_kodesk');
+
+     $ket = Keterangansk::create([
+        'id_kodesk' => $id_kodesk,
+        'kode_sk' => $request->kode_sk
+     ]);
+     
 
         if($kode){
             return redirect('admindesa/kodesk')->with('success','Berhasil Tambah Data');

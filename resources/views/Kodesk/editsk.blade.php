@@ -283,7 +283,7 @@
 
                                     <div class="mb-4 row">
                                       @foreach($data as $datask)
-                                    @if($datask->keterangan_2 !== null)
+                                    @if($item->keterangan_2 !== null)
                                     <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>{{ $item->keterangan_2 }}</b></label>
                                         <div class="col-md-7">
                                           <select class="choices form-select" name="keterangan_2">
@@ -306,10 +306,10 @@
 
                                     <div class="mb-4 row">
                                       @foreach($data as $datask)
-                                    @if($datask->keterangan_3 !== null)
+                                    @if($item->keterangan_3 !== null)
                                     <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>{{ $item->keterangan_3 }}</b></label>
                                         <div class="col-md-7">
-                                          <select class="choices form-select" name="keterangan_2">
+                                          <select class="choices form-select" name="keterangan_3">
                                             <option value="{{ $datask->keterangan_3}}">{{ $datask->keterangan_3 }}</option>
                                             <option value="">-Disable-</option>
                                             @for ($i = 1; $i <= 11; $i++)
@@ -329,10 +329,10 @@
 
                                     <div class="mb-2 row">
                                       @foreach($data as $datask)
-                                    @if($datask->keterangan_4 !== null)
+                                    @if($item->keterangan_4 !== null)
                                     <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>{{ $item->keterangan_4}}</b></label>
                                         <div class="col-md-7">
-                                          <select class="choices form-select" name="keterangan_2">
+                                          <select class="choices form-select" name="keterangan_4">
                                             <option value="{{ $datask->keterangan_4}}">{{ $datask->keterangan_4 }}</option>
                                             <option value="">-Disable-</option>
                                             @for ($i = 1; $i <= 11; $i++)
