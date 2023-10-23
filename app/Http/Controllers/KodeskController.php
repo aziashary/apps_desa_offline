@@ -18,11 +18,14 @@ class KodeskController extends Controller
     public function editsk($id_kodesk)
     {
         // mengambil data surat dengan id yang dipilih
-        $data = Keterangansk::where('id_kodesk', $id_kodesk)->get();
+        $data = Keterangansk::where('id_kodesk', $id_kodesk)->first();
         $item = Kodesk::where('id_kodesk', $id_kodesk)->first();
 
+        $keterangankodesk = json_decode($data->keterangan, true);
+        $detailkodesk = json_decode($data->detail_keterangansk, true);
+
         // mengirim data surat ke view edit.blade.php
-        return view('kodesk.editsk', compact('data','item'));
+        return view('kodesk.editsk', compact('data','item','keterangankodesk','detailkodesk'));
     }
     
     public function create()
@@ -103,6 +106,15 @@ class KodeskController extends Controller
             'file' => 'nullable|mimes:xlsx,xls|max:2048',
         ]);
 
+        $keteranganKodesk = [];
+        for ($i = 1; $i <= 100; $i++) {
+            $fieldName = "keterangan_$i";
+            $fieldValue = $request->$fieldName;
+            if ($fieldValue !== null) {
+                $keteranganKodesk[$fieldName] = $fieldValue;
+            }
+        }
+
         $file = $request->file('file');
         $namafile = $file->getClientOriginalName();
         $request->file->move(public_path('plugin\xls'),$namafile);
@@ -112,12 +124,10 @@ class KodeskController extends Controller
       'kode_sk'  => $request->kode_sk,
       'jenis_sk'  => $request->jenis_sk,
       'singkatan_sk'  => $request->singkatan_sk,
+      'jumlah_warga' => $request->jumlah_warga,
       'file_name' =>  $namafile,
       'url_print' => $url,
-        'keterangan_1'  => $request->keterangan_1,
-        'keterangan_2'  => $request->keterangan_2,
-        'keterangan_3'  => $request->keterangan_3,
-        'keterangan_4'  => $request->keterangan_4,
+      'keterangan_kodesk' => json_encode($keteranganKodesk),
      );
 
      $kode=Kodesk::create($form_data);
@@ -139,6 +149,15 @@ class KodeskController extends Controller
 
     function update($id_kodesk, request $request)
     {
+        $keteranganKodesk = [];
+        for ($i = 1; $i <= 100; $i++) {
+            $fieldName = "keterangan_$i";
+            $fieldValue = $request->$fieldName;
+            if ($fieldValue !== null) {
+                $keteranganKodesk[$fieldName] = $fieldValue;
+            }
+        }
+
        $kodesk=Kodesk::where('id_kodesk', $id_kodesk)->first();
         $form = array(
             'kode_sk' => $request->kode_sk,
@@ -160,12 +179,9 @@ class KodeskController extends Controller
             'kode_sk'  => $request->kode_sk,
             'jenis_sk'  => $request->jenis_sk,
             'singkatan_sk'  => $request->singkatan_sk,
+            'jumlah_warga' => $request->jumlah_warga,
             'file_name' =>  $namafile,
-            'url_print' => $url,
-              'keterangan_1'  => $request->keterangan_1,
-              'keterangan_2'  => $request->keterangan_2,
-              'keterangan_3'  => $request->keterangan_3,
-              'keterangan_4'  => $request->keterangan_4,
+            'keterangan_kodesk' => json_encode($keteranganKodesk),
               
            );
 
@@ -180,25 +196,33 @@ class KodeskController extends Controller
 
     function updatesk($id_kodesk, request $request)
     {
+        $keteranganKodesk = [];
+        for ($i = 1; $i <= 100; $i++) {
+            $fieldName = "keterangan_$i";
+            $fieldValue = $request->$fieldName;
+            if ($fieldValue !== null) {
+                $keteranganKodesk[$fieldName] = $fieldValue;
+            }
+        }
 
         $form_data = array(
         'kode_sk' => $request->kode_sk,
-        'no_sk' => $request->no_sk,
-        'nik'=> $request->nik,
-        'nama_warga'=> $request->nama_warga,
-        'tempat_lahir'=> $request->tempat_lahir,
-        'tanggal_lahir'=> $request->tanggal_lahir,
-        'alamat'=> $request->alamat,
-        'jenis_pekerjaan'=> $request->jenis_pekerjaan,
-        'agama'=> $request->agama,
-        'keterangan_1'=> $request->keterangan_1,
-        'keterangan_2'=> $request->keterangan_2,
-        'keterangan_3'=> $request->keterangan_3,
-        'keterangan_4'=> $request->keterangan_4,
-        'tanggal'=> $request->tanggal,
-        'jabatan'=> $request->jabatan,
-        'ttd_pengaju'=> $request->ttd_pengaju,
-        'ttd_kepala'=> $request->ttd_kepala
+        'keterangan_kodesk' => json_encode([
+            'no_sk' => $request->no_sk,
+            'nik'=> $request->nik,
+            'nama_warga'=> $request->nama_warga,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir'=> $request->tempat_lahir,
+            'tanggal_lahir'=> $request->tanggal_lahir,
+            'alamat'=> $request->alamat,
+            'jenis_pekerjaan'=> $request->jenis_pekerjaan,
+            'agama'=> $request->agama,
+             $keteranganKodesk,
+            'tanggal'=> $request->tanggal,
+            'jabatan'=> $request->jabatan,
+            'ttd_pengaju'=> $request->ttd_pengaju,
+            'ttd_kepala'=> $request->ttd_kepala
+        ])
               
            );
         

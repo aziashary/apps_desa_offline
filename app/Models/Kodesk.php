@@ -16,10 +16,8 @@ class Kodesk extends Model
         'kode_sk',
         'jenis_sk',
         'singkatan_sk',
-        'keterangan_1',
-        'keterangan_2',
-        'keterangan_3',
-        'keterangan_4',
+        'jumlah_warga',
+        'keterangan_kodesk',
         'file_name',
         'url_print'
 

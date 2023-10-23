@@ -352,6 +352,15 @@ class SKController extends Controller
             }
         }
         
+        $keterangansk = [];
+        for ($i = 1; $i <= 100; $i++) {
+            $fieldName = "keterangan_$i";
+            $fieldValue = $request->$fieldName;
+            if ($fieldValue !== null) {
+                $keterangansk[$fieldName] = $fieldValue;
+            }
+        }
+
 
         $yearNow = date('Y');
         $id_sk = SK::latest('id_sk')->select('id_sk')->value('id_sk');
@@ -364,10 +373,7 @@ class SKController extends Controller
       'jenis_sk' => $jenis_sk->jenis_sk,
       'id_kodesk' => $jenis_sk->id_kodesk,
       'id_warga'  => $request->id_warga,
-      'keterangan_1'  => $request->keterangan_1,
-      'keterangan_2'  => $request->keterangan_2,
-      'keterangan_3'  => $request->keterangan_3,
-      'keterangan_4'  => $request->keterangan_4,
+      'keterangan_sk' => json_encode($keterangansk),
       
      );
 
@@ -402,12 +408,18 @@ class SKController extends Controller
         // $id_sk = SK::latest('id_sk')->select('id_sk')->value('id_sk');
         // $no_sk = "140"." /"."  ".($id_sk+1)."  "."/ ".$returnValue." / ".$yearNow;
 
+        $keterangansk = [];
+        for ($i = 1; $i <= 100; $i++) {
+            $fieldName = "keterangan_$i";
+            $fieldValue = $request->$fieldName;
+            if ($fieldValue !== null) {
+                $keterangansk[$fieldName] = $fieldValue;
+            }
+        }
+
      $form_data = array(
       'id_warga'  => $request->id_warga,
-      'keterangan_1'  => $request->keterangan_1,
-      'keterangan_2'  => $request->keterangan_2,
-      'keterangan_3'  => $request->keterangan_3,
-      'keterangan_4'  => $request->keterangan_4,
+      'keterangan_sk' => json_encode($keterangansk),
       
      );
 

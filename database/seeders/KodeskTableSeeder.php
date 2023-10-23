@@ -19,8 +19,11 @@ class KodeskTableSeeder extends Seeder
             'kode_sk' => 510,
             'jenis_sk' => 'Surat Keterangan Usaha',
             'singkatan_sk'=>'SKU',
-            'keterangan_1'=>'Jenis Usaha',
-            'keterangan_2' => 'Alamat Usaha',
+            'keterangan_kodesk' => json_encode([
+                'keterangan_1'=>'Jenis Usaha',
+                'keterangan_2' => 'Alamat Usaha',
+            ]),
+            'jumlah_warga' => 1,
             'file_name' => 'sku.xlsx',
             'url_print' => "plugin\xls\sku.xlsx"
 
@@ -30,8 +33,11 @@ class KodeskTableSeeder extends Seeder
             'kode_sk' => 140,
             'jenis_sk' => 'Surat Keterangan Keluarga Miskin',
             'singkatan_sk'=>'SKKM',
-            'keterangan_1'=>'Keterangan Surat',
-            'keterangan_2' => 'Usulan Surat',
+            'keterangan_kodesk' => json_encode([
+                'keterangan_1'=>'Keterangan Surat',
+                'keterangan_2' => 'Usulan Surat',
+            ]),
+            'jumlah_warga' => 1,
             'file_name' => 'skkm.xlsx',
             'url_print' => "plugin\xls\skkm.xlsx"
         ]);

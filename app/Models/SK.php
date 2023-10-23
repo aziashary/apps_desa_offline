@@ -18,10 +18,8 @@ class SK extends Model
         'jenis_sk',
         'no_sk',
         'id_warga',
-        'keterangan_1',
-        'keterangan_2',
-        'keterangan_3',
-        'keterangan_4'
+        'detail_sk',
+        'keterangan_sk'
     ];
 
     public function wargas()

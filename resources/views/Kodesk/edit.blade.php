@@ -52,6 +52,24 @@
                                       </div>
                                 </div>
 
+                                <div class="mb-3 row">
+                                    <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Jumlah warga :</b></label>
+                                    <div class="col-md-7">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jumlah_warga" id="satu_keterangan" value="1" checked>
+                                            <label class="form-check-label" for="satu_keterangan">
+                                                1 (Satu) Warga
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jumlah_warga" id="dua_keterangan" value="2">
+                                            <label class="form-check-label" for="dua_keterangan">
+                                                2 (Dua) Warga
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {{-- <div class="mb-3 row">
                                     <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Jumlah Keterangan :</b></label>
                                       <div class="col-md-7">
