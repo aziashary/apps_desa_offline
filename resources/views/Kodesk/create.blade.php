@@ -52,6 +52,7 @@
                                         multiple
                                         class="form-select"
                                         id="jumlah_keterangan"
+                                        name="jumlah_keterangan"
                                         aria-label="Multiple select example"
                                         >
                                         <option value="" selected>Satu Keterangan</option>

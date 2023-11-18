@@ -79,6 +79,7 @@ Route::group(['prefix' => 'pengajuan'], function () {
 // Admin Desa
 Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
         Route::group(['prefix' => 'warga'], function () {
     Route::get('/', [WargaController::class, 'index']);

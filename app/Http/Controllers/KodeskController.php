@@ -23,9 +23,10 @@ class KodeskController extends Controller
 
         $keterangankodesk = json_decode($data->keterangan, true);
         $detailkodesk = json_decode($data->detail_keterangansk, true);
+        $kodesk = json_decode($item->keterangan_kodesk, true);
 
-        // mengirim data surat ke view edit.blade.php
-        return view('kodesk.editsk', compact('data','item','keterangankodesk','detailkodesk'));
+        // mengirim data surat ke view editsk.blade.php
+        return view('kodesk.editsk', compact('data','item','keterangankodesk','detailkodesk','kodesk'));
     }
     
     public function create()
@@ -134,9 +135,23 @@ class KodeskController extends Controller
 
      $id_kodesk = Kodesk::latest('id_kodesk')->select('id_kodesk')->value('id_kodesk');
 
+    //  jumlah keterangan
+     $jumlahKeterangan = $request->input('jumlah_keterangan');
+
+     // Buat array untuk menampung keterangan
+    $keteranganArray = [];
+
+    // Loop untuk membuat keterangan dalam bentuk array
+    for ($i = 1; $i <= $jumlahKeterangan; $i++) {
+        $keteranganKey = "keterangan_" . $i;
+        $keteranganArray[$keteranganKey] = "";
+    }
+    
+
      $ket = Keterangansk::create([
         'id_kodesk' => $id_kodesk,
-        'kode_sk' => $request->kode_sk
+        'kode_sk' => $request->kode_sk,
+        'keterangan' => json_encode($keteranganArray),
      ]);
      
 
@@ -204,26 +219,44 @@ class KodeskController extends Controller
                 $keteranganKodesk[$fieldName] = $fieldValue;
             }
         }
+        
 
         $form_data = array(
         'kode_sk' => $request->kode_sk,
-        'keterangan_kodesk' => json_encode([
+        'detail_keterangansk' => json_encode([
             'no_sk' => $request->no_sk,
-            'nik'=> $request->nik,
-            'nama_warga'=> $request->nama_warga,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'tempat_lahir'=> $request->tempat_lahir,
-            'tanggal_lahir'=> $request->tanggal_lahir,
-            'alamat'=> $request->alamat,
-            'jenis_pekerjaan'=> $request->jenis_pekerjaan,
-            'agama'=> $request->agama,
-             $keteranganKodesk,
+            'warga' => [
+                [
+                    'nik' => $request->nik,
+                    'nama_warga' => $request->nama_warga,
+                    'jenis_kelamin' => $request->jenis_kelamin,
+                    'tempat_lahir' => $request->tempat_lahir,
+                    'tanggal_lahir' => $request->tanggal_lahir,
+                    'alamat' => $request->alamat,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan,
+                    'agama' => $request->agama,
+                ],
+                [
+                    'nik' => $request->nik_2,
+                    'nama_warga' => $request->nama_warga_2,
+                    'jenis_kelamin' => $request->jenis_kelamin_2,
+                    'tempat_lahir' => $request->tempat_lahir_2,
+                    'tanggal_lahir' => $request->tanggal_lahir_2,
+                    'alamat' => $request->alamat_2,
+                    'jenis_pekerjaan' => $request->jenis_pekerjaan_2,
+                    'agama' => $request->agama_2,
+                ],
+                // Tambahkan warga ketiga atau lebih jika diperlukan
+            ],
             'tanggal'=> $request->tanggal,
             'jabatan'=> $request->jabatan,
             'ttd_pengaju'=> $request->ttd_pengaju,
             'ttd_kepala'=> $request->ttd_kepala
-        ])
-              
+        ]),
+        'keterangan' => json_encode(
+         $keteranganKodesk,
+        )
+                  
            );
         
         $cekkode=Keterangansk::where('id_kodesk', $id_kodesk)->get();

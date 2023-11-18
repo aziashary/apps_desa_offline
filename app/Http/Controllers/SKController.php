@@ -120,75 +120,72 @@ class SKController extends Controller
     // Retrieve data from the database using Laravel's query builder
     // Data SK
     $item = SK::where('id_sk', $request->id_sk)->with('wargas')->first();
-    $kets = Keterangansk::where('kode_sk', $data->kode_sk)->first();
+    $kets = Keterangansk::where('id_kodesk', $data->id_kodesk)->first();
     $aparatur = Aparaturdesa::where('id_aparatur', $request->ttd_kepala)->first();
+
+    $keterangankodesk = json_decode($kets->keterangan, true);
+    $detailkodesk = json_decode($kets->detail_keterangansk, true);
+    $detailsk = json_decode($item->keterangan_sk, true);
     
     // Keterangan SK
     
 
     // Insert the data into the appropriate cells in the XLS file
-    if (!empty($kets->no_sk)) {
-        $worksheet->setCellValue($kets->no_sk, $item->no_sk);
+    if (!empty($detailkodesk['no_sk'])) {
+        $worksheet->setCellValue($detailkodesk['no_sk'], $item->no_sk);
     }
     
-    if (!empty($kets->nama_warga)) {
-        $worksheet->setCellValue($kets->nama_warga, $item->wargas->nama_warga);
+    if (!empty($detailkodesk['warga'][0]['nama_warga'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['nama_warga'], $item->wargas->nama_warga);
     }
 
-    if (!empty($kets->tanggal_lahir)) {
-        $worksheet->setCellValue($kets->tanggal_lahir, date('d-m-Y', strtotime($item->wargas->tanggal_lahir)));
+    if (!empty($detailkodesk['warga'][0]['tanggal_lahir'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['tanggal_lahir'], date('d-m-Y', strtotime($item->wargas->tanggal_lahir)));
     }
 
-    if (!empty($kets->tempat_lahir)) {
-        $worksheet->setCellValue($kets->tempat_lahir, $item->wargas->tempat_lahir);
+    if (!empty($detailkodesk['warga'][0]['tempat_lahir'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['tempat_lahir'], $item->wargas->tempat_lahir);
     }
     
-    if (!empty($kets->nik)) {
-        $worksheet->setCellValue($kets->nik, $item->wargas->nik);
+    if (!empty($detailkodesk['warga'][0]['nik'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['nik'], $item->wargas->nik);
     }
     
-    if (!empty($kets->jenis_pekerjaan)) {
-        $worksheet->setCellValue($kets->jenis_pekerjaan, $item->wargas->jenis_pekerjaan);
+    if (!empty($detailkodesk['warga'][0]['jenis_pekerjaan'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['jenis_pekerjaan'], $item->wargas->jenis_pekerjaan);
     }
     
-    if (!empty($kets->agama)) {
-        $worksheet->setCellValue($kets->agama, $item->wargas->agama);
+    if (!empty($detailkodesk['warga'][0]['agama'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['agama'], $item->wargas->agama);
     }
     
-    if (!empty($kets->alamat)) {
-        $worksheet->setCellValue($kets->alamat, $item->wargas->alamat);
+    if (!empty($detailkodesk['warga'][0]['alamat'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['alamat'], $item->wargas->alamat);
     }
     
-    if (!empty($kets->keterangan_1)) {
-        $worksheet->setCellValue($kets->keterangan_1, $item->keterangan_1);
+    for ($i = 1; $i <= 20; $i++) {
+        $kunci = "keterangan_$i";
+    
+        if (!empty($keterangankodesk[$kunci]) && !empty($detailsk[$kunci])) {
+            $worksheet->setCellValue($keterangankodesk[$kunci], $detailsk[$kunci]);
+        }
     }
     
-    if (!empty($kets->keterangan_2)) {
-        $worksheet->setCellValue($kets->keterangan_2, $item->keterangan_2);
-    }
     
-    if (!empty($kets->keterangan_3)) {
-        $worksheet->setCellValue($kets->keterangan_3, $item->keterangan_3);
-    }
-    
-    if (!empty($kets->keterangan_4)) {
-        $worksheet->setCellValue($kets->keterangan_4, $item->keterangan_4);
-    }
-    
-    if (!empty($kets->tanggal)) {
-    $worksheet->setCellValue($kets->tanggal, date('d-m-Y', strtotime($item->created_at)));
+    if (!empty($detailkodesk['tanggal'])) {
+    $worksheet->setCellValue($detailkodesk['tanggal'], date('d-m-Y', strtotime($item->created_at)));
     }
 
-    if (!empty($kets->ttd_kepala)) {
-        $worksheet->setCellValue($kets->ttd_kepala, $aparatur->nama_aparatur);
+    if (!empty($detailkodesk['ttd_kepala'])) {
+        $worksheet->setCellValue($detailkodesk['ttd_kepala'], $aparatur->nama_aparatur);
     }
 
-    if (!empty($kets->jabatan)) {
-        $worksheet->setCellValue($kets->jabatan, $aparatur->nama_jabatan);
+    if (!empty($detailkodesk['jabatan'])) {
+        $worksheet->setCellValue($detailkodesk['jabatan'], $aparatur->nama_jabatan);
     }
     
-    if (!empty($kets->ttd_pengaju)) {
-        $worksheet->setCellValue($kets->ttd_pengaju, $item->wargas->nama_warga);
+    if (!empty($detailkodesk['ttd_pengaju'])) {
+        $worksheet->setCellValue($detailkodesk['ttd_pengaju'], $item->wargas->nama_warga);
     }
     
     
@@ -337,6 +334,7 @@ class SKController extends Controller
 
     function store(Request $request)
     {
+        // Penentuan NO surat
         $MonthNow = date('M');
         $month_number = date("n",strtotime($MonthNow));
 
@@ -351,7 +349,12 @@ class SKController extends Controller
                 }
             }
         }
+
+        $yearNow = date('Y');
+        $id_sk = SK::latest('id_sk')->select('id_sk')->value('id_sk');
+        $no_sk = ($request->kode_sk)." /"."  ".($id_sk+1)."  "."/ ".$returnValue." / ".$yearNow;
         
+        // Array Keterangan
         $keterangansk = [];
         for ($i = 1; $i <= 100; $i++) {
             $fieldName = "keterangan_$i";
@@ -361,18 +364,43 @@ class SKController extends Controller
             }
         }
 
-
-        $yearNow = date('Y');
-        $id_sk = SK::latest('id_sk')->select('id_sk')->value('id_sk');
-        $no_sk = ($request->kode_sk)." /"."  ".($id_sk+1)."  "."/ ".$returnValue." / ".$yearNow;
+        //Elemen yang diperlukan
         $jenis_sk = Kodesk::where('kode_sk', $request->kode_sk)->first();
+        $warga_1 = Warga::where('id_warga', $request->id_warga_1)->first();
+        $warga_2 = Warga::where('id_warga', $request->id_warga_2)->first();
 
      $form_data = array(
       'no_sk'  => $no_sk,
       'kode_sk' => $request->kode_sk,
       'jenis_sk' => $jenis_sk->jenis_sk,
       'id_kodesk' => $jenis_sk->id_kodesk,
-      'id_warga'  => $request->id_warga,
+      'id_warga'  => $request->id_warga_1,
+      'detail_sk' => json_encode([
+        'no_sk' => $no_sk,
+        'warga' => [
+            [
+                'nik' => $warga_1->nik,
+                'nama_warga' => $warga_1->nama_warga,
+                'jenis_kelamin' => $warga_1->jenis_kelamin,
+                'tempat_lahir' => $warga_1->tempat_lahir,
+                'tanggal_lahir' => $warga_1->tanggal_lahir,
+                'alamat' => $warga_1->alamat,
+                'jenis_pekerjaan' => $warga_1->jenis_pekerjaan,
+                'agama' => $warga_1->agama,
+            ],
+            $warga_2 !== null ? [
+                'nik' => $warga_2->nik,
+                'nama_warga' => $warga_2->nama_warga,
+                'jenis_kelamin' => $warga_2->jenis_kelamin,
+                'tempat_lahir' => $warga_2->tempat_lahir,
+                'tanggal_lahir' => $warga_2->tanggal_lahir,
+                'alamat' => $warga_2->alamat,
+                'jenis_pekerjaan' => $warga_2->jenis_pekerjaan,
+                'agama' => $warga_2->agama,
+            ] : [],
+            // Tambahkan warga ketiga atau lebih jika diperlukan
+        ],
+    ]),
       'keterangan_sk' => json_encode($keterangansk),
       
      );

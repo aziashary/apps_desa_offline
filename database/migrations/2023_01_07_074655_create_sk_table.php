@@ -20,7 +20,7 @@ class CreateSkTable extends Migration
             $table->string('jenis_sk');
             $table->string('no_sk')->unique();
             $table->string('id_warga');
-            $table->json('detail_sk');
+            $table->json('detail_sk')->nullable();
             $table->json('keterangan_sk');
             $table->timestamps();
         });

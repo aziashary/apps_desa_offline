@@ -75,10 +75,23 @@ class DashboardwargaController extends Controller
 
     // Menghasilkan form input otomatis berdasarkan nilai jenis_sk_id
     $kodesk = Kodesk::where('kode_sk', $jenisSkId)->first();
+    $data = Warga::orderBy('nama_warga', 'ASC')->get();
 
     $keteranganKodesk = json_decode($kodesk->keterangan_kodesk, true);
 
-    $formInput = '';
+    if ($kodesk->jumlah_warga == 2) {
+        $formInput = "<h6>Nama Warga Kedua</h6>
+        <div class='form-group'>
+            <select class='choices form-select' name='id_warga_2'>";
+        
+        foreach ($data as $warga) {
+            $formInput .= "<option value='{$warga->id_warga}'>{$warga->nama_warga}</option>";
+        }
+        
+        $formInput .= "</select></div><br>";
+    } else {
+        $formInput = "";
+    }
 
     // Surat
         foreach ($keteranganKodesk as $key => $value) {

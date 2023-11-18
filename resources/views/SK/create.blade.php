@@ -34,7 +34,7 @@
                         <div class="col-md-12 mb-4">
                             <h6>Nama Warga / yang Mengajukan Surat</h6>
                             <div class="form-group">
-                                <select class="choices form-select" name="id_warga">
+                                <select class="choices form-select" name="id_warga_1">
                                         @foreach($data as $warga)
                                     <option value="{{ $warga->id_warga }}">{{ $warga->nama_warga }}</option>
                                         @endforeach
