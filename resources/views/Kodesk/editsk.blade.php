@@ -30,8 +30,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Nama</b></label>
-                                        <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Nama</b></label>
+                                        <div class="col-md-3">
                                             <select class="choices form-select" name="nama_warga">
                                                 @if(isset($detailkodesk['warga'][0]['nama_warga']))
                                                 <option value="{{$detailkodesk['warga'][0]['nama_warga']}}">{{$detailkodesk['warga'][0]['nama_warga']}}</option>
@@ -49,8 +49,8 @@
                                             </select>
                                         </div>
                                
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>NIK</b></label>
-                                    <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>NIK</b></label>
+                                    <div class="col-md-3">
                                         <select class="choices form-select" name="nik">
                                             @if(isset($detailkodesk['warga'][0]['nik']))
                                             <option value="{{$detailkodesk['warga'][0]['nik']}}">{{$detailkodesk['warga'][0]['nik']}}</option>
@@ -69,8 +69,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Tempat Lahir</b></label>
-                                      <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Tempat Lahir</b></label>
+                                      <div class="col-md-3">
                                           <select class="choices form-select" name="tempat_lahir">
                                             @if(isset($detailkodesk['warga'][0]['tempat_lahir']))
                                             <option value="{{$detailkodesk['warga'][0]['tempat_lahir']}}">{{$detailkodesk['warga'][0]['tempat_lahir']}}</option>
@@ -88,8 +88,8 @@
                                           </select>
                                       </div>
                                 
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Tanggal Lahir</b></label>
-                                    <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Tanggal Lahir</b></label>
+                                    <div class="col-md-3">
                                       <select class="choices form-select" name="tanggal_lahir">
                                         @if(isset($detailkodesk['warga'][0]['tanggal_lahir']))
                                         <option value="{{$detailkodesk['warga'][0]['tanggal_lahir']}}">{{$detailkodesk['warga'][0]['tanggal_lahir']}}</option>
@@ -108,8 +108,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Jenis Pekerjaan</b></label>
-                                      <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Jenis Pekerjaan</b></label>
+                                      <div class="col-md-3">
                                           <select class="choices form-select" name="jenis_pekerjaan">
                                             @if(isset($detailkodesk['warga'][0]['jenis_pekerjaan']))
                                             <option value="{{$detailkodesk['warga'][0]['jenis_pekerjaan']}}">{{$detailkodesk['warga'][0]['jenis_pekerjaan']}}</option>
@@ -127,8 +127,8 @@
                                           </select>
                                       </div>
                                 
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Agama</b></label>
-                                    <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Agama</b></label>
+                                    <div class="col-md-3">
                                       <select class="choices form-select" name="agama">
                                         @if(isset($detailkodesk['warga'][0]['agama']))
                                         <option value="{{$detailkodesk['warga'][0]['agama']}}">{{$detailkodesk['warga'][0]['agama']}}</option>
@@ -147,8 +147,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Jenis Kelamin</b></label>
-                                    <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Jenis Kelamin</b></label>
+                                    <div class="col-md-3">
                                         <select class="choices form-select" name="jenis_kelamin">
                                             @if(isset($detailkodesk['warga'][0]['jenis_kelamin']))
                                           <option value="{{$detailkodesk['warga'][0]['jenis_kelamin']}}">{{$detailkodesk['warga'][0]['jenis_kelamin']}}</option>
@@ -166,8 +166,8 @@
                                         </select>
                                     </div>
                               
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Alamat</b></label>
-                                      <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Alamat</b></label>
+                                      <div class="col-md-3">
                                           <select class="choices form-select" name="alamat">
                                             @if(isset($detailkodesk['warga'][0]['alamat']))
                                             <option value="{{$detailkodesk['warga'][0]['alamat']}}">{{$detailkodesk['warga'][0]['alamat']}}</option>
@@ -192,8 +192,8 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Nama</b></label>
-                                    <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Nama</b></label>
+                                    <div class="col-md-3">
                                         <select class="choices form-select" name="nama_warga_2">
                                             @if(isset($detailkodesk['warga'][1]['nama_warga']))
                                             <option value="{{$detailkodesk['warga'][1]['nama_warga']}}">{{$detailkodesk['warga'][1]['nama_warga']}}</option>
@@ -211,8 +211,8 @@
                                         </select>
                                     </div>
                            
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>NIK</b></label>
-                                <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>NIK</b></label>
+                                <div class="col-md-3">
                                     <select class="choices form-select" name="nik_2">
                                         @if(isset($detailkodesk['warga'][1]['nik']))
                                         <option value="{{$detailkodesk['warga'][1]['nik']}}">{{$detailkodesk['warga'][1]['nik']}}</option>
@@ -231,8 +231,8 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Tempat Lahir</b></label>
-                                  <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Tempat Lahir</b></label>
+                                  <div class="col-md-3">
                                       <select class="choices form-select" name="tempat_lahir_2">
                                         @if(isset($detailkodesk['warga'][1]['tempat_lahir']))
                                         <option value="{{$detailkodesk['warga'][1]['tempat_lahir']}}">{{$detailkodesk['warga'][1]['tempat_lahir']}}</option>
@@ -250,8 +250,8 @@
                                       </select>
                                   </div>
                             
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Tanggal Lahir</b></label>
-                                <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Tanggal Lahir</b></label>
+                                <div class="col-md-3">
                                   <select class="choices form-select" name="tanggal_lahir_2">
                                     @if(isset($detailkodesk['warga'][1]['tanggal_lahir']))
                                     <option value="{{$detailkodesk['warga'][1]['tanggal_lahir']}}">{{$detailkodesk['warga'][1]['tanggal_lahir']}}</option>
@@ -270,8 +270,8 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Jenis Pekerjaan</b></label>
-                                  <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Jenis Pekerjaan</b></label>
+                                  <div class="col-md-3">
                                       <select class="choices form-select" name="jenis_pekerjaan_2">
                                         @if(isset($detailkodesk['warga'][1]['jenis_pekerjaan']))
                                         <option value="{{$detailkodesk['warga'][1]['jenis_pekerjaan']}}">{{$detailkodesk['warga'][1]['jenis_pekerjaan']}}</option>
@@ -289,8 +289,8 @@
                                       </select>
                                   </div>
                             
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Agama</b></label>
-                                <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Agama</b></label>
+                                <div class="col-md-3">
                                   <select class="choices form-select" name="agama_2">
                                     @if(isset($detailkodesk['warga'][1]['agama']))
                                     <option value="{{$detailkodesk['warga'][1]['agama']}}">{{$detailkodesk['warga'][1]['agama']}}</option>
@@ -309,8 +309,8 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Jenis Kelamin</b></label>
-                                <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Jenis Kelamin</b></label>
+                                <div class="col-md-3">
                                     <select class="choices form-select" name="jenis_kelamin_2">
                                         @if(isset($detailkodesk['warga'][1]['jenis_kelamin']))
                                       <option value="{{$detailkodesk['warga'][1]['jenis_kelamin']}}">{{$detailkodesk['warga'][1]['jenis_kelamin']}}</option>
@@ -328,8 +328,8 @@
                                     </select>
                                 </div>
                           
-                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Alamat</b></label>
-                                  <div class="col-md-2">
+                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Alamat</b></label>
+                                  <div class="col-md-3">
                                       <select class="choices form-select" name="alamat_2">
                                         @if(isset($detailkodesk['warga'][1]['alamat']))
                                         <option value="{{$detailkodesk['warga'][1]['alamat']}}">{{$detailkodesk['warga'][1]['alamat']}}</option>
@@ -356,8 +356,8 @@
 
                             <div class="mb-3 row">
                                 <input type="hidden" name="kode_sk" value="{{ $item->kode_sk }}">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Nomor SK</b></label>
-                                      <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Nomor SK</b></label>
+                                      <div class="col-md-3">
                                           <select class="choices form-select" name="no_sk">
                                             @if(isset($detailkodesk['no_sk']))
                                                 <option value="{{$detailkodesk['no_sk']}}">{{$detailkodesk['no_sk']}}</option>
@@ -376,8 +376,8 @@
                                       </div>
                             </div>
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Jabatan</b></label>
-                                        <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Jabatan</b></label>
+                                        <div class="col-md-3">
                                         <select class="choices form-select" name="jabatan">
                                             @if(isset($detailkodesk['jabatan']))
                                             <option value="{{$detailkodesk['jabatan']}}">{{$detailkodesk['jabatan']}}</option>
@@ -394,8 +394,8 @@
                                             ?>
                                         </select>
                                         </div>
-                                        <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Ttd Kepala Desa</b></label>
-                                        <div class="col-md-2">
+                                        <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Ttd Kepala Desa</b></label>
+                                        <div class="col-md-3">
                                         <select class="choices form-select" name="ttd_kepala">
                                             @if(isset($detailkodesk['ttd_kepala']))
                                             <option value="{{$detailkodesk['ttd_kepala']}}">{{$detailkodesk['ttd_kepala']}}</option>
@@ -414,8 +414,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Tanggal Surat</b></label>
-                                    <div class="col-md-2">
+                                    <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Tanggal Surat</b></label>
+                                    <div class="col-md-3">
                                       <select class="choices form-select" name="tanggal">
                                         @if(isset($detailkodesk['tanggal']))
                                         <option value="{{$detailkodesk['tanggal']}}">{{$detailkodesk['tanggal']}}</option>
@@ -432,8 +432,8 @@
                                         ?>
                                       </select>
                                     </div>
-                                        <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Ttd Warga</b></label>
-                                        <div class="col-md-2">
+                                        <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>Ttd Warga</b></label>
+                                        <div class="col-md-3">
                                             <select class="choices form-select" name="ttd_pengaju">
                                                 @if(isset($detailkodesk['ttd_pengaju']))
                                                 <option value="{{ $detailkodesk['ttd_pengaju'] }}">{{ $detailkodesk['ttd_pengaju'] }}</option>
@@ -461,7 +461,7 @@
                                     @foreach ($keterangankodesk as $key => $value)
                                         @if ($key === $kodeskKey)
                                             <div class="mb-4 row">
-                                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>{{ $kodeskValue}}</b></label>
+                                                <label for="html5-text-input" class="col-md-2 col-form-label text-center"><b>{{ $kodeskValue}}</b></label>
                                                 <div class="col-md-7">
                                                     <select class="choices form-select" name="{{ $key }}">
                                                         <option value="{{ $value }}">{{ $value }}</option>
