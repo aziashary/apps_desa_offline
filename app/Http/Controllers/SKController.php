@@ -120,20 +120,29 @@ class SKController extends Controller
     // Retrieve data from the database using Laravel's query builder
     // Data SK
     $item = SK::where('id_sk', $request->id_sk)->with('wargas')->first();
-    $kets = Keterangansk::where('id_kodesk', $data->id_kodesk)->first();
+    $kets = Keterangansk::where('id_kodesk', $data->id_kodesk)->with('sks')->first();
     $aparatur = Aparaturdesa::where('id_aparatur', $request->ttd_kepala)->first();
 
     $keterangankodesk = json_decode($kets->keterangan, true);
     $detailkodesk = json_decode($kets->detail_keterangansk, true);
-    $detailsk = json_decode($item->keterangan_sk, true);
+    $detailsk = json_decode($item->detail_sk, true);
+    $keterangansk = json_decode($item->keterangan_sk, true);
     
     // Keterangan SK
-    
+    $birthdate = new \DateTime($item->wargas->tanggal_lahir);
+    $currentDate = new \DateTime();
+    $umur = $currentDate->diff($birthdate)->y;
+
+    $birthdate2 = new \DateTime($detailsk['warga'][1]['tanggal_lahir']);
+    $currentDate2 = new \DateTime();
+    $umur2 = $currentDate2->diff($birthdate2)->y;
 
     // Insert the data into the appropriate cells in the XLS file
     if (!empty($detailkodesk['no_sk'])) {
         $worksheet->setCellValue($detailkodesk['no_sk'], $item->no_sk);
     }
+
+    // Data Warga 1
     
     if (!empty($detailkodesk['warga'][0]['nama_warga'])) {
         $worksheet->setCellValue($detailkodesk['warga'][0]['nama_warga'], $item->wargas->nama_warga);
@@ -142,9 +151,17 @@ class SKController extends Controller
     if (!empty($detailkodesk['warga'][0]['tanggal_lahir'])) {
         $worksheet->setCellValue($detailkodesk['warga'][0]['tanggal_lahir'], date('d-m-Y', strtotime($item->wargas->tanggal_lahir)));
     }
+    
+    if (!empty($detailkodesk['warga'][0]['jenis_kelamin'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['jenis_kelamin'], $item->wargas->jenis_kelamin);
+    }
 
     if (!empty($detailkodesk['warga'][0]['tempat_lahir'])) {
         $worksheet->setCellValue($detailkodesk['warga'][0]['tempat_lahir'], $item->wargas->tempat_lahir);
+    }
+
+    if (!empty($detailkodesk['warga'][0]['umur'])) {
+        $worksheet->setCellValue($detailkodesk['warga'][0]['umur'], $umur . ' Tahun');
     }
     
     if (!empty($detailkodesk['warga'][0]['nik'])) {
@@ -162,12 +179,54 @@ class SKController extends Controller
     if (!empty($detailkodesk['warga'][0]['alamat'])) {
         $worksheet->setCellValue($detailkodesk['warga'][0]['alamat'], $item->wargas->alamat);
     }
+
+    // Data Warga 2
+    if ($kets->sks->jumlah_warga == 2){
+        if (!empty($detailkodesk['warga'][1]['nama_warga'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['nama_warga'], $detailsk['warga'][1]['nama_warga']);
+        }
     
+        if (!empty($detailkodesk['warga'][1]['tanggal_lahir'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['tanggal_lahir'], date('d-m-Y', strtotime($detailsk['warga'][1]['tanggal_lahir'])));
+        }
+        
+        if (!empty($detailkodesk['warga'][1]['jenis_kelamin'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['jenis_kelamin'], $detailsk['warga'][1]['jenis_kelamin']);
+        }
+    
+        if (!empty($detailkodesk['warga'][1]['tempat_lahir'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['tempat_lahir'], $detailsk['warga'][1]['tempat_lahir']);
+        }
+    
+        if (!empty($detailkodesk['warga'][1]['umur'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['umur'], $umur2 . ' Tahun');
+        }
+        
+        if (!empty($detailkodesk['warga'][1]['nik'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['nik'], $detailsk['warga'][1]['nik']);
+        }
+        
+        if (!empty($detailkodesk['warga'][1]['jenis_pekerjaan'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['jenis_pekerjaan'], $detailsk['warga'][1]['jenis_pekerjaan']);
+        }
+        
+        if (!empty($detailkodesk['warga'][1]['agama'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['agama'], $detailsk['warga'][1]['agama']);
+        }
+        
+        if (!empty($detailkodesk['warga'][1]['alamat'])) {
+            $worksheet->setCellValue($detailkodesk['warga'][1]['alamat'], $detailsk['warga'][1]['alamat']);
+        }
+    }
+
+
+
+    // Detail SK
     for ($i = 1; $i <= 20; $i++) {
         $kunci = "keterangan_$i";
     
-        if (!empty($keterangankodesk[$kunci]) && !empty($detailsk[$kunci])) {
-            $worksheet->setCellValue($keterangankodesk[$kunci], $detailsk[$kunci]);
+        if (!empty($keterangankodesk[$kunci]) && !empty($keterangansk[$kunci])) {
+            $worksheet->setCellValue($keterangankodesk[$kunci], $keterangansk[$kunci]);
         }
     }
     

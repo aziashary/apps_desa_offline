@@ -184,7 +184,27 @@
                                             ?>
                                           </select>
                                       </div>
-                            </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Umur</b></label>
+                                      <div class="col-md-2">
+                                          <select class="choices form-select" name="umur">
+                                            @if(isset($detailkodesk['warga'][0]['umur']))
+                                            <option value="{{$detailkodesk['warga'][0]['umur']}}">{{$detailkodesk['warga'][0]['umur']}}</option>
+                                            @endif   
+                                             <option value="">-Disable-</option>
+                                              <?php
+                                              for ($i=1; $i<=11; $i++) {
+                                                  for ($j=0; $j<50; $j++) {
+                                                      $char = chr(64 + $i);
+                                                      $value = $char . ($j+1);
+                                                      echo "<option value='{$value}'>{$value}</option>";
+                                                  }
+                                              }
+                                            ?>
+                                          </select>
+                                      </div>
+                                </div>
                         @if ($item->jumlah_warga == 2)
                             <div class="mb-3 row">
                                 <div class="divider divider-dark">
@@ -334,6 +354,26 @@
                                         @if(isset($detailkodesk['warga'][1]['alamat']))
                                         <option value="{{$detailkodesk['warga'][1]['alamat']}}">{{$detailkodesk['warga'][1]['alamat']}}</option>
                                         @endif    
+                                         <option value="">-Disable-</option>
+                                          <?php
+                                          for ($i=1; $i<=11; $i++) {
+                                              for ($j=0; $j<50; $j++) {
+                                                  $char = chr(64 + $i);
+                                                  $value = $char . ($j+1);
+                                                  echo "<option value='{$value}'>{$value}</option>";
+                                              }
+                                          }
+                                        ?>
+                                      </select>
+                                  </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="html5-text-input" class="col-md-3 col-form-label text-center"><b>Umur</b></label>
+                                  <div class="col-md-2">
+                                      <select class="choices form-select" name="umur_2">
+                                        @if(isset($detailkodesk['warga'][1]['umur']))
+                                        <option value="{{$detailkodesk['warga'][1]['umur']}}">{{$detailkodesk['warga'][1]['umur']}}</option>
+                                        @endif   
                                          <option value="">-Disable-</option>
                                           <?php
                                           for ($i=1; $i<=11; $i++) {

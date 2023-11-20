@@ -215,9 +215,7 @@ class KodeskController extends Controller
         for ($i = 1; $i <= 100; $i++) {
             $fieldName = "keterangan_$i";
             $fieldValue = $request->$fieldName;
-            if ($fieldValue !== null) {
                 $keteranganKodesk[$fieldName] = $fieldValue;
-            }
         }
         
 
@@ -235,6 +233,7 @@ class KodeskController extends Controller
                     'alamat' => $request->alamat,
                     'jenis_pekerjaan' => $request->jenis_pekerjaan,
                     'agama' => $request->agama,
+                    'umur' => $request->umur,
                 ],
                 [
                     'nik' => $request->nik_2,
@@ -245,6 +244,7 @@ class KodeskController extends Controller
                     'alamat' => $request->alamat_2,
                     'jenis_pekerjaan' => $request->jenis_pekerjaan_2,
                     'agama' => $request->agama_2,
+                    'umur' => $request->umur_2,
                 ],
                 // Tambahkan warga ketiga atau lebih jika diperlukan
             ],
