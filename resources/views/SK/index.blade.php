@@ -49,7 +49,6 @@
                         <th>Nama</th>
                         <th>Tanggal</th>
                         <th>Surat</th>
-                        <th>Keterangan</th>
                         <th>Aksi</th>
                         <th>Cetak</th>
                     </tr>
@@ -66,7 +65,6 @@
                         <td  style="width: 200px;">{{ $sk->wargas->nama_warga }}</td>
                         <td  style="width: 130px;">{{ date('d-m-Y', strtotime($sk->created_at)) }}</td>
                         <td >{{ $sk->sks->singkatan_sk}}</td>
-                        <td  style="width: 150px;">{{ $sk->keterangan_1 }}
                         <td style="width: 300px;" align="center" >
                             <a href="{{ URL('admindesa/SK/edit/'. $sk->id_sk) }}" class="btn btn-success">Edit</a>
                             <a href="{{ URL('admindesa/SK/delete/'. $sk->id_sk) }}" class="btn btn-danger" 

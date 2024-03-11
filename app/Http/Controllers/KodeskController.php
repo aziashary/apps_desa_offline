@@ -38,6 +38,7 @@ class KodeskController extends Controller
     public function edit($id_kodesk)
     {
         $kodesk = Kodesk::where('id_kodesk', $id_kodesk)->first();
+        $kodesk->keterangan_kodesk = json_decode($kodesk->keterangan_kodesk);
         return view('kodesk.edit', compact('kodesk'));
     }
 
@@ -94,6 +95,33 @@ class KodeskController extends Controller
                                 <input type="text" class="form-control" id="keterangan_4" name="keterangan_4" placeholder="Keterangan 4" required>
                             </div>
                         </div>';
+                    } elseif ($keteranganId == 5) {
+                        $formInput .= '
+                        
+                        <div class="mb-3 row">
+                        <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 2</b></label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" id="keterangan_2" name="keterangan_2" placeholder="Keterangan 2" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                        <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 3</b></label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" id="keterangan_3" name="keterangan_3" placeholder="Keterangan 3" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                        <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 4</b></label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" id="keterangan_4" name="keterangan_4" placeholder="Keterangan 4" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                        <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 5</b></label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" id="keterangan_5" name="keterangan_5" placeholder="Keterangan 5" required>
+                            </div>
+                        </div>';
                     }
     
 
@@ -108,7 +136,7 @@ class KodeskController extends Controller
         ]);
 
         $keteranganKodesk = [];
-        for ($i = 1; $i <= 100; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $fieldName = "keterangan_$i";
             $fieldValue = $request->$fieldName;
             if ($fieldValue !== null) {
@@ -187,7 +215,7 @@ class KodeskController extends Controller
             $file = $request->file('file');
             $namafile = $file->getClientOriginalName();
             $request->file->move(public_path('plugin/xls'),$namafile);
-            $url = "plugin/xls/". $namafile;
+            $url = "plugin\\xls\\". $namafile;
         }
 
         $form_data = array(
@@ -196,6 +224,7 @@ class KodeskController extends Controller
             'singkatan_sk'  => $request->singkatan_sk,
             'jumlah_warga' => $request->jumlah_warga,
             'file_name' =>  $namafile,
+            'url_print' => $url,
             'keterangan_kodesk' => json_encode($keteranganKodesk),
               
            );
@@ -271,6 +300,17 @@ class KodeskController extends Controller
             return redirect('admindesa/kodesk')->with('success','Berhasil Update Data');
         }else{
             return back()->with('error','Gagal Update Data');
+        }
+    }
+
+    function delete($id_kodesk)
+    { 
+     $destroy = Kodesk::where('id_kodesk', $id_kodesk)->delete();
+
+        if($destroy){
+        return redirect('admindesa/kodesk')->with('success','Berhasil menghapus data');
+        }else{
+            return back()->with('error','Gagal Hapus Data');
         }
     }
 

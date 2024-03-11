@@ -27,7 +27,7 @@
                                 <div class="mb-3 row">
                                   <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Kode Surat</b></label>
                                     <div class="col-md-7">
-                                        <input type="number" class="form-control" id="kode_sk" name="kode_sk" value="{{ $kodesk->kode_sk }}" required>
+                                        <input type="text" class="form-control" id="kode_sk" name="kode_sk" value="{{ $kodesk->kode_sk }}" required>
                                     </div>
                                 </div>
 
@@ -70,55 +70,40 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Jumlah Keterangan :</b></label>
-                                      <div class="col-md-7">
-                                        <select
-                                        multiple
-                                        class="form-select"
-                                        id="jumlah_keterangan"
-                                        aria-label="Multiple select example"
-                                        >
-                                        <option value="" selected>Satu Keterangan</option>
-                                        <option value="2">Dua Keterangan</option>
-                                        <option value="3">Tiga Keterangan</option>
-                                        <option value="4">Empat Keterangan</option>
-                                        </select>
-                                      </div>
-                                </div> --}}
+                                <div class="mb-3 row">
+                                    <div class="col-md-4 offset-md-7">
+                                        <button type="button" class="btn btn-primary" id="tambah_keterangan">Tambah Keterangan</button>
+                                    </div>
+                                </div>
 
                                 <div class="mb-3 row">
                                     <div class="divider divider-dark">
                                         <div class="divider-text">Keterangan</div>
                                     </div>
                                 </div>
+                                @foreach($kodesk->keterangan_kodesk as $key => $value)
+                                    <div class="mb-3 row">
+                                        <div class="form-group row">
+                                            <label for="{{ $key }}" class="col-md-4 col-form-label text-center"><b>{{ ucwords(str_replace('_', ' ', $key)) }}</b></label>
+                                            <div class="col-md-7">
+                                                <input type="text" class="form-control" id="{{ $key }}" name="{{ $key }}" value="{{ $value }}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
 
                                 <div class="mb-3 row">
-                                    <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 1</b></label>
-                                        <div class="col-md-7">
-                                            <input type="text" class="form-control" id="keterangan_1" name="keterangan_1" value="{{ $kodesk->keterangan_1}}" required>
-                                        </div>
+                                    <div class="divider divider-dark">
+                                        <div class="divider-text">Keterangan Tambahan</div>
                                     </div>
-                                    <div class="mb-3 row">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 2</b></label>
-                                        <div class="col-md-7">
-                                            <input type="text" class="form-control" id="keterangan_2" name="keterangan_2" value="{{ $kodesk->keterangan_2 }}">
-                                        </div>
-                                    </div>
+                                </div>
+
+                                <div id="keterangan_form">
+                                    <!-- Ini adalah tempat untuk menambahkan form keterangan tambahan -->
+                                </div>
+
+                                
                                     
-                                    <div class="mb-3 row">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 3</b></label>
-                                        <div class="col-md-7">
-                                            <input type="text" class="form-control" id="keterangan_3" name="keterangan_3" value="{{ $kodesk->keterangan_3 }}" >
-                                        </div>
-                                    </div>
-                                  
-                                    <div class="mb-3 row">
-                                        <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Keterangan 4</b></label>
-                                        <div class="col-md-7">
-                                            <input type="text" class="form-control" id="keterangan_4" name="keterangan_4" value="{{ $kodesk->keterangan_4 }}" >
-                                        </div>
-                                    </div>
                                     
                                     
                             </div>
@@ -170,6 +155,34 @@
         }
     });
 });
+</script>
+
+<script>
+    // Variable untuk menghitung jumlah keterangan tambahan
+    var keteranganCount = 0;
+
+    // Fungsi untuk menambahkan form keterangan tambahan
+    $('#tambah_keterangan').click(function() {
+        keteranganCount++;
+        var newKeteranganForm = '<div class="mb-3 row" id="keterangan_' + keteranganCount + '">' +
+            '<div class="form-group row">' +
+            '<label for="keterangan_' + keteranganCount + '" class="col-md-4 col-form-label text-center"><b>Keterangan Tambahan ' + keteranganCount + '</b></label>' +
+            '<div class="col-md-7">' +
+            '<input type="text" class="form-control" id="keterangan_' + keteranganCount + '" name="keterangan_' + keteranganCount + '" required>' +
+            '</div>' +
+            '<div class="col-md-1">' +
+            '<button type="button" class="btn btn-danger hapus_keterangan" data-keterangan="' + keteranganCount + '">Hapus</button>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+        $('#keterangan_form').append(newKeteranganForm);
+    });
+
+    // Fungsi untuk menghapus form keterangan tambahan
+    $(document).on('click', '.hapus_keterangan', function() {
+        var keteranganNumber = $(this).data('keterangan');
+        $('#keterangan_' + keteranganNumber).remove();
+    });
 </script>
 
 @endpush

@@ -145,12 +145,22 @@
                 </div>
                 <br>
             @endif
+
+            @if(isset($kodesk->keterangan_5) && !empty($kodesk->keterangan_5))
+                <h6>Keterangan 5</h6>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="keterangan_5" name="keterangan_5"  value="{{ $kodesk->keterangan_5}}"  maxlength="100" readonly>
+                </div>
+                <br>
+            @endif
         </div>
         <br>
         
         <div class="modal-footer">
+            <a href="{{ URL('admindesa/kodesk/delete/'. $kodesk->id_kodesk) }}" class="btn btn-danger" 
+                onclick="return confirm('Apakah Anda yakin ingin menghapus {{ $kodesk->singkatan_sk }}?')">Hapus</a>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            {{-- <button type="submit" class="btn btn-success me-1 mb-1">Submit</button> --}}
+          </td>
         </div>
             {{-- </form> --}}
         </div>

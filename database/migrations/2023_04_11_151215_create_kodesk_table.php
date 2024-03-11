@@ -20,7 +20,7 @@ class CreateKodeskTable extends Migration
             $table->string('singkatan_sk')->nullable();
             $table->string('jumlah_warga');
             $table->json('keterangan_kodesk');
-            $table->string('file_name')->nullable();
+            $table->string('file_name')->unique();
             $table->string('url_print')->nullable();
             $table->timestamps();
         });

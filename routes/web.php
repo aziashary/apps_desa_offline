@@ -135,6 +135,7 @@ Route::group(['prefix' => 'admindesa', 'middleware' => 'isAdmin'], function () {
     Route::post('/store', [Kodeskcontroller::class, 'store']);
     Route::patch('/update/{id_kodesk}', [Kodeskcontroller::class, 'update']);
     Route::patch('/updatesk/{id_kodesk}', [Kodeskcontroller::class, 'updatesk']);
+    Route::get('/delete/{id_kodesk}', [Kodeskcontroller::class, 'delete']);
         });
 
         Route::group(['prefix' => 'sejarah'], function () {

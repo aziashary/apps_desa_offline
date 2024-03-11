@@ -27,7 +27,7 @@
                                 <div class="mb-3 row">
                                   <label for="html5-text-input" class="col-md-4 col-form-label text-center"><b>Kode Surat</b></label>
                                     <div class="col-md-7">
-                                        <input type="number" class="form-control" id="kode_sk" name="kode_sk" placeholder="Kode Surat" required>
+                                        <input type="text" class="form-control" id="kode_sk" name="kode_sk" placeholder="Kode Surat" required>
                                     </div>
                                 </div>
 
@@ -59,6 +59,7 @@
                                         <option value="2">Dua Keterangan</option>
                                         <option value="3">Tiga Keterangan</option>
                                         <option value="4">Empat Keterangan</option>
+                                        <option value="5">Lima Keterangan</option>
                                         </select>
                                       </div>
                                 </div>
